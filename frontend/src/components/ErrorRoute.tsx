@@ -1,7 +1,7 @@
 const ErrorRoute = () => {
     return (
         <div>
-            An error has occured try refreshing the page.
+            An error has occurred try refreshing the page.
         </div>
     )
 }

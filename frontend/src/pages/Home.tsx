@@ -1,6 +1,8 @@
+import styles from './Home.module.scss'
+
 const Home = () => {
     return(
-        <div>yoooo</div>
+        <div className={styles.container}>yoooo</div>
     )
 }
 
