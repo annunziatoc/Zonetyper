@@ -9,8 +9,7 @@ const Layout = () => {
     const {darkMode} = useTheme()
 
     return (
-        <div className={`min-h-screen 
-        ${darkMode  ? 'dark:bg-background': 'bg-background'} dark:text-primary`}>
+        <div className="app-layout" data-theme={darkMode ? 'dark' : 'light'}>
             <header>
                 <Header/>
             </header>

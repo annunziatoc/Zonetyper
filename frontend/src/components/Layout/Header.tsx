@@ -7,7 +7,7 @@ const Header = () => {
 
     return (
         <div>
-            <button className="bg-green-500 p-10"
+            <button className=""
                     onClick={() => toggleTheme()}>hey</button>
             header</div>
     )
