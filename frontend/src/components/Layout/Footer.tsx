@@ -1,10 +1,12 @@
 
 const Footer = () => {
     return(
-        <div>footer</div>
+        <div className="border border-yellow-500">Footer</div>
     )
 }
 
 
 
 export default Footer
+
+

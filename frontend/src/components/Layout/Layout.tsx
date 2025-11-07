@@ -9,7 +9,8 @@ const Layout = () => {
     const {darkMode} = useTheme()
 
     return (
-        <div className="app-layout" data-theme={darkMode ? 'dark' : 'light'}>
+        <div className="h-screen grid grid-rows-[auto_1fr_auto] text-text-primary dark:text-text-primary-dark
+         bg-background dark:bg-background-dark" data-theme={darkMode ? 'dark' : 'light'}>
             <header>
                 <Header/>
             </header>
@@ -25,3 +26,5 @@ const Layout = () => {
 
 
 export default Layout
+
+

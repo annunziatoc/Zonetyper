@@ -1,47 +1,28 @@
-/* main.css */
+@import "tailwindcss";
 
-/* Theme variables */
-:root {
+@theme {
     --color-background: #dbd6d6;
+    --color-background-dark: #1f1f1f;
+
     --color-surface: #f8f9fa;
+    --color-surface-dark: #31748F;
+
     --color-text-primary: #1a1a1a;
+    --color-text-primary-dark: #E0E0E0;
+
     --color-text-secondary: #6b7280;
+    --color-text-secondary-dark: #95AFC7;
+
     --color-action: #d63384;
+    --color-action-dark: #CB6583;
+
     --color-interactive: #0d6efd;
+    --color-interactive-dark: #6E87EE;
+
     --color-success: #198754;
+    --color-success-dark: #5FB3B4;
+
     --color-border: #dee2e6;
+    --color-border-dark: #6E6A86;
 }
 
-[data-theme="dark"]{
-    --color-background: #1f1f1f;
-    --color-surface: #31748F;
-    --color-text-primary: #E0E0E0;
-    --color-text-secondary: #95AFC7;
-    --color-action: #CB6583;
-    --color-interactive: #6E87EE;
-    --color-success: #5FB3B4;
-    --color-border: #6E6A86;
-}
-
-/* Base styles */
-*, *::before, *::after {
-    box-sizing: inherit;
-    margin: 0;
-    padding: 0;
-}
-
-/* Base Setup */
-html {
-    box-sizing: border-box;
-}
-
-body {
-    display: grid;
-    grid-template-rows: auto 1fr auto;
-    min-height: 100vh;
-    font-family: system-ui, -apple-system, sans-serif;
-    font-size: clamp(16px, 2vw, 18px);
-    line-height: 1.6;
-    color: var(--color-text-primary);
-    background-color: var(--color-background);
-}

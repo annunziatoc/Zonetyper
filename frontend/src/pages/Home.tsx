@@ -1,10 +1,11 @@
-import styles from './Home.module.scss'
 
 const Home = () => {
-    return(
-        <div className={styles.container}>yoooo</div>
+    return (
+        <div className="border border-red-500">Home</div>
     )
 }
 
 
 export default Home
+
+
