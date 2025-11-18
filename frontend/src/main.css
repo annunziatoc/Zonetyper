@@ -1,8 +1,12 @@
 @import "tailwindcss";
 
 @theme {
+
+    --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+    --font-display: 'Audiowide', ui-sans-serif, sans-serif;
+    
     --color-background: #dbd6d6;
-    --color-background-dark: #1f1f1f;
+    --color-background-dark: #191a1c;
 
     --color-surface: #f8f9fa;
     --color-surface-dark: #31748F;
@@ -25,4 +29,6 @@
     --color-border: #dee2e6;
     --color-border-dark: #6E6A86;
 }
+
+
 
