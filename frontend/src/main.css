@@ -2,7 +2,7 @@
 
 @theme {
 
-    --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+    --font-mono: 'Aboreto', 'Armata', 'Audiowide', 'Italiana', 'Merienda', 'Nobile', 'JetBrains Mono', ui-monospace, monospace;
     --font-display: 'Audiowide', ui-sans-serif, sans-serif;
     
     --color-background: #dbd6d6;
