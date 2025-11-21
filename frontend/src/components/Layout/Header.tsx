@@ -10,11 +10,9 @@ const Header = () => {
             <div className="flex justify-between px-1 py-2 mb-10 w-full max-w-5xl mx-auto">
                 <Link to="/" className="text-xl font-display">
                     <div className="text-xl font-display"><span className="mr-2">[</span>
-                        <span className="text-neutral-500">
-                        <span className="text-zinc-200">Z o n e </span>
+                        <span className="text-text-primary dark:text-text-primary-dark">Z o n e </span>
                         <span className="text-red-500">T y p e </span>
-                        </span>
-                        <span className="inline-block 
+                        <span className="inline-block  
                p-[0.15rem] rotate-15 ml-[0.18rem] bg-red-500 ">R</span>
                         <span className="ml-2.5">]</span>
                     </div>
