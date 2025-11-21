@@ -1,8 +1,20 @@
+import HeroMaskSvg from "../components/HeroMaskSvg.tsx";
 
 const Home = () => {
     return (
-        <div className="border border-blue-500 h-[350px] w-4xl mx-auto rounded-lg mt-30">
-            
+        <div>
+            <div className="relative w-4xl mx-auto mt-30 h-[500px]">
+                <div
+                    className="absolute inset-0 bg-teal-800 "
+                    style={{ clipPath: 'url(#heroClip)' }}
+                >
+                    <div className="p-8 text-white">
+                        Your content here
+                    </div>
+                </div>
+            </div>
+
+            <HeroMaskSvg />
         </div>
     )
 }
