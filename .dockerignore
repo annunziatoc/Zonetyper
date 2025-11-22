@@ -1,0 +1,20 @@
+node_modules          # Node/React
+build                 # React
+dist                  # Vite
+.git                  # Git
+.env                  # Environment
+.env.local
+.env.*.local
+.DS_Store             # macOS
+coverage              # Testing
+.vscode               # IDEs
+.idea
+*.md                  # Docs
+*.log                 # Logs
+*.user                # .NET
+*.suo                 # .NET
+.vs                   # .NET (Visual Studio)
+bin                   # .NET (build output)
+obj                   # .NET (build output)
+packages              # .NET (NuGet)
+appsettings.Development.json  # .NET (dev config)
