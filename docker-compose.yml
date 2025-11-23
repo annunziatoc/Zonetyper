@@ -1,9 +1,34 @@
-version: '3.8'
 services:
   frontend:
-    build: .
+    build: ./Frontend
+    container_name: zonetyper-frontend
     ports:
-      - "3000:3000"
+      - "5173:5173"
+    depends_on:
+      - backend
+  
+  backend:
+    build: ./Backend/ZonetyperApi
+    container_name: zonetyper-backend
+    ports:
+      - "5000:5000"
+    environment:
+      - ASPNETCORE_URLS=http://+:5000
+      - ConnectionStrings__DefaultConnection=Host=postgres;Port=5432;Database=${POSTGRES_DB};Username=${POSTGRES_USER};Password=${POSTGRES_PASSWORD}
+    depends_on:
+      - postgres
+  
+  postgres:
+    image: postgres:16
+    container_name: zonetyper-db
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    ports:
+      - "5432:5432"
     volumes:
-      - .:/app
-      - /app/node_modules
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
