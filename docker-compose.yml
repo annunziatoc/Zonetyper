@@ -4,6 +4,9 @@ services:
     container_name: zonetyper-frontend
     ports:
       - "5173:5173"
+    volumes:
+      - ./Frontend:/app
+      - /app/node_modules
     depends_on:
       - backend
   
@@ -14,7 +17,10 @@ services:
       - "5000:5000"
     environment:
       - ASPNETCORE_URLS=http://+:5000
-      - ConnectionStrings__DefaultConnection=Host=postgres;Port=5432;Database=${POSTGRES_DB};Username=${POSTGRES_USER};Password=${POSTGRES_PASSWORD}
+      - ConnectionStrings__DefaultConnection=Host=postgres;
+      - Port=5432;Database=${POSTGRES_DB};
+      - Username=${POSTGRES_USER};
+      - Password=${POSTGRES_PASSWORD}
     depends_on:
       - postgres
   

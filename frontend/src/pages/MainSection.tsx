@@ -1,4 +1,5 @@
 import HeroMaskSvg from "../components/HeroMaskSvg.tsx";
+import TextAreaInput from "../components/TextAreaInput.tsx";
 
 const MainSection = () => {
     return (
@@ -23,7 +24,7 @@ const MainSection = () => {
                         }}
                     />
                     <div className="relative py-10 px-6 text-typing-surface-text dark:text-typing-surface-text-dark font-mono text-xl">
-                        Your content here
+                        <TextAreaInput/>
                     </div>
                 </div>
             </section>
