@@ -33,9 +33,6 @@
     --color-text-success: oklch(0.5709 0.28 251.58);
     --color-text-success-dark: oklch(0.63 0.20 245);
 
-    --color-text-failure: #827e71;
-    --color-text-failure-dark: #ad1d33;
-
     --color-bg-failure: oklch(0.62 0.2681 19.38);
     --color-bg-failure-dark: oklch(0.63 0.2681 19.38);
 
