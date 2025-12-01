@@ -1,9 +1,13 @@
-import {useState} from 'react';
+import {useState, type RefObject} from 'react';
 
-const TextAreaInput = () => {
+interface TextAreaInputProps {
+    inputRef: RefObject<HTMLTextAreaElement | null>;
+}
+
+const TextAreaInput = ({inputRef}: TextAreaInputProps) => {
 
 
-    const string = `On a Mars where ruthless corporate interests violently 
+    const testStr = `On a Mars where ruthless corporate interests violently 
     collide with a homegrown independence movement as Earth-based overlords 
     battle for profits and power, Hakan Veil is an ex–professional enforcer 
     equipped with military-grade body tech that's made him a human killing machine. 
@@ -16,25 +20,31 @@ const TextAreaInput = () => {
     const [textInput, setTextInput] = useState("")
 
 
-    for (let i = 0; i < textInput.length; i++) {
-        
-        if (string[i] === textInput[i]) {
-            //we good green
-        } else {
-            //red highlight bad 
-        }
+    function checkInput(index: number) {
+        if (index >= textInput.length) return 'text-typing-surface-text dark:text-typing-surface-text-dark';
+        if (textInput[index] === testStr[index]) return 'text-green-500';
+        return 'text-red-500';
     }
 
 
     return (
-        <>
-        <textarea className="absolute opacity-0" value={textInput} onChange={(e) => setTextInput(e.target.value)} />
+        <div className="relative w-full h-full">
+            <textarea
+                ref={inputRef}
+                value={textInput}
+                onChange={(e) => setTextInput(e.target.value)}
+                style={{
+                    position: 'absolute',
+                    left: '-10000px'
+                }}
+            />
+
             <div>
-                {string.split('').map((char, index) => (
-                    <span key={`${index + char}`} className="">{char}</span>)
+                {testStr.split('').map((char, index) => (
+                    <span key={index} className={checkInput(index)}>{char}</span>)
                 )}
             </div>
-        </>
+        </div>
     )
 }
 

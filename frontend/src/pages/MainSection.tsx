@@ -1,18 +1,28 @@
 import HeroMaskSvg from "../components/HeroMaskSvg.tsx";
 import TextAreaInput from "../components/TextAreaInput.tsx";
 
+import {useRef} from 'react';
+
+
+
+
 const MainSection = () => {
+    
+    
+    const inputRef = useRef<HTMLTextAreaElement>(null);
+    
     return (
         <div className="h-full flex items-center justify-center">
             <section className="relative w-full max-w-4xl mx-auto h-[400px] -mt-30">
                 <div
-                    className="absolute inset-0 bg-typing-surface dark:bg-typing-surface-dark before:absolute before:inset-0 before:pointer-events-none"
+                    onClick={() => {inputRef.current?.focus();}}
+                    className="absolute inset-0 bg-typing-surface dark:bg-typing-surface-dark before:absolute before:inset-0"
                     style={{
                         clipPath: 'url(#heroClip)',
                     }}
                 >
                     <div
-                        className="absolute inset-0 pointer-events-none opacity-20"
+                        className="absolute inset-0 opacity-20"
                         style={{
                             backgroundImage: `
             repeating-linear-gradient(45deg, transparent, transparent 8px, rgba(100,116,139,.08) 8px, rgba(100,116,139,.08) 16px),
@@ -24,7 +34,7 @@ const MainSection = () => {
                         }}
                     />
                     <div className="relative py-10 px-6 text-typing-surface-text dark:text-typing-surface-text-dark font-mono text-xl">
-                        <TextAreaInput/>
+                        <TextAreaInput inputRef={inputRef}/>
                     </div>
                 </div>
             </section>
