@@ -14,7 +14,8 @@ const TextAreaInput = ({inputRef}: TextAreaInputProps) => {
     But he's had enough of the turbulent red planet, and all he wants is a ticket 
     back home—which is just what he's offered by the Earth Oversight organization, 
     in exchange for being the bodyguard for an EO investigator. It's a beyond-easy 
-    gig for a heavy hitter like Veil … until it isn't.`.trim();
+    gig for a heavy hitter like Veil … until it isn't.`
+        .trim().replace(/\s+/g, ' ').replace(/[–—]/g, '-');
 
 
     const [textInput, setTextInput] = useState("")
@@ -22,17 +23,24 @@ const TextAreaInput = ({inputRef}: TextAreaInputProps) => {
 
     function checkInput(index: number) {
         if (index >= textInput.length) return 'text-typing-surface-text dark:text-typing-surface-text-dark';
-        if (textInput[index] === testStr[index]) return 'text-green-500';
-        return 'text-red-500';
+        if (textInput[index] === testStr[index]) return 'text-text-success dark:text-text-success-dark';
+        return 'bg-bg-failure dark:bg-bg-failure-dark'
     }
 
+    function highlightCurrentCaret(index: number) {
+       return textInput.length === index ? 'bg-caret-background dark:bg-caret-background-dark' : '';
+    }
 
     return (
         <div className="relative w-full h-full">
             <textarea
                 ref={inputRef}
                 value={textInput}
-                onChange={(e) => setTextInput(e.target.value)}
+                onChange={(e) => {
+                    if(e.target.value.length <= testStr.length) {
+                        setTextInput(e.target.value)
+                    }
+                }}
                 style={{
                     position: 'absolute',
                     left: '-10000px'
@@ -41,7 +49,8 @@ const TextAreaInput = ({inputRef}: TextAreaInputProps) => {
 
             <div>
                 {testStr.split('').map((char, index) => (
-                    <span key={index} className={checkInput(index)}>{char}</span>)
+                    <span key={index} className={`${checkInput(index)} ${highlightCurrentCaret(index)} text-[1.40rem]`}>{char}</span>
+                    )
                 )}
             </div>
         </div>

@@ -8,7 +8,6 @@ import {useRef} from 'react';
 
 const MainSection = () => {
     
-    
     const inputRef = useRef<HTMLTextAreaElement>(null);
     
     return (

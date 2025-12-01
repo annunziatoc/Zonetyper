@@ -27,6 +27,18 @@
     --color-text-secondary: #6b7280;
     --color-text-secondary-dark: #95AFC7;
 
+    --color-caret-background: oklch(0.67 0.0 93.27);
+    --color-caret-background-dark: oklch(0.52 0.015 93.27);
+
+    --color-text-success: oklch(0.5709 0.28 251.58);
+    --color-text-success-dark: oklch(0.63 0.20 245);
+
+    --color-text-failure: #827e71;
+    --color-text-failure-dark: #ad1d33;
+
+    --color-bg-failure: oklch(0.62 0.2681 19.38);
+    --color-bg-failure-dark: oklch(0.63 0.2681 19.38);
+
     --color-action: #d63384;
     --color-action-dark: #CB6583;
 
