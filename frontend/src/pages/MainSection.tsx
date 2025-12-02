@@ -11,7 +11,8 @@ const MainSection = () => {
     const inputRef = useRef<HTMLTextAreaElement>(null);
     
     return (
-        <div className="h-full flex items-center justify-center">
+        <div className="h-full flex items-center justify-center"
+             onClick={() => {inputRef.current?.focus();}}>
             <section className="relative w-full max-w-4xl mx-auto h-[400px] -mt-30">
                 <div
                     onClick={() => {inputRef.current?.focus();}}
