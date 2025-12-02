@@ -1,6 +1,6 @@
 const Footer = () => {
     return (
-        <div className="flex justify-start px-1 py-2 mb-10 w-full max-w-4xl mx-auto gap-3 text-sm opacity-60">
+        <div className="flex justify-start px-1 py-2 w-full max-w-4xl mx-auto gap-3 text-sm opacity-60">
             <div className="flex gap-2 justify-center items-center">
                 <div className="relative py-1 px-2 bg-typing-surface dark:bg-typing-surface-dark rounded overflow-hidden">
                     <div
