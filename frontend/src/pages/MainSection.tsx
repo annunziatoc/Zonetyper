@@ -13,7 +13,7 @@ const MainSection = () => {
     return (
         <div className="h-full flex items-center justify-center"
              onClick={() => {inputRef.current?.focus();}}>
-            <section className="relative w-full max-w-4xl mx-auto h-[400px] -mt-30">
+            <section className="relative w-full max-w-4xl mx-auto h-[400px] ">
                 <div
                     onClick={() => {inputRef.current?.focus();}}
                     className="absolute inset-0 bg-typing-surface dark:bg-typing-surface-dark before:absolute before:inset-0"
