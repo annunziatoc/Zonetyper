@@ -4,18 +4,27 @@ import TextAreaInput from "../components/TextAreaInput.tsx";
 import {useRef} from 'react';
 
 
-
-
 const MainSection = () => {
-    
+
     const inputRef = useRef<HTMLTextAreaElement>(null);
-    
+
     return (
         <div className="h-full flex items-center justify-center select-none"
-             onClick={() => {inputRef.current?.focus();}}>
+             onClick={() => {
+                 inputRef.current?.focus();
+             }}>
             <section className="relative w-full max-w-4xl mx-auto h-[400px]">
                 <div
-                    onClick={() => {inputRef.current?.focus();}}
+                    className="absolute inset-0 blur-[200px] bg-stone-900  dark:bg-stone-700 before:absolute before:inset-0"
+                    style={{
+                        clipPath: 'url(#heroClip)',
+                        transform: 'scale(1.004)',
+                    }}
+                />
+                <div
+                    onClick={() => {
+                        inputRef.current?.focus();
+                    }}
                     className="absolute inset-0 bg-typing-surface dark:bg-typing-surface-dark before:absolute before:inset-0"
                     style={{
                         clipPath: 'url(#heroClip)',
@@ -33,13 +42,14 @@ const MainSection = () => {
                             backgroundSize: '16px 16px, 16px 16px, 8px 8px, 8px 8px'
                         }}
                     />
-                    <div className="relative py-10 px-6 text-typing-surface-text dark:text-typing-surface-text-dark font-mono text-xl">
+                    <div
+                        className="relative py-10 px-6 text-typing-surface-text dark:text-typing-surface-text-dark font-mono text-xl">
                         <TextAreaInput inputRef={inputRef}/>
                     </div>
                 </div>
             </section>
 
-            <HeroMaskSvg />
+            <HeroMaskSvg/>
         </div>
     )
 }

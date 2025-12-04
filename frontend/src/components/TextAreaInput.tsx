@@ -12,12 +12,12 @@ const TextAreaInput = ({inputRef}: TextAreaInputProps) => {
     equipped with military-grade body 
     `
         .trim().replace(/\s+/g, ' ').replace(/[–—]/g, '-');
-    
+
     const testStr = rawStr.length > 627 ? rawStr.slice(0, 627) + '...' : rawStr;
-    
+
 
     const [textInput, setTextInput] = useState("")
-    const [caretPos, setCaretPos] = useState({ left: 0, top: 0 })
+    const [caretPos, setCaretPos] = useState({left: 0, top: 0})
     const charRefs = useRef<(HTMLSpanElement | null)[]>([])
 
     useEffect(() => {
@@ -34,11 +34,13 @@ const TextAreaInput = ({inputRef}: TextAreaInputProps) => {
         }
     }, [textInput.length])
 
+
     function checkInput(index: number) {
         if (index >= textInput.length) return 'text-typing-surface-text dark:text-typing-surface-text-dark';
         if (textInput[index] === testStr[index]) return 'text-text-success dark:text-text-success-dark';
         return 'bg-bg-failure dark:bg-bg-failure-dark'
     }
+
 
     return (
         <div className="relative w-full h-full">
@@ -49,6 +51,7 @@ const TextAreaInput = ({inputRef}: TextAreaInputProps) => {
                     if (e.target.value.length <= testStr.length) {
                         setTextInput(e.target.value)
                     }
+
                 }}
                 style={{
                     position: 'absolute',
@@ -70,7 +73,7 @@ const TextAreaInput = ({inputRef}: TextAreaInputProps) => {
                     {testStr.split('').map((char, index) => (
                         <span
                             key={index}
-                            ref={el => void(charRefs.current[index] = el)}
+                            ref={el => void (charRefs.current[index] = el)}
                             className={`${checkInput(index)} text-[1.40rem] font-mono`}
                         >
                             {char}
@@ -83,3 +86,5 @@ const TextAreaInput = ({inputRef}: TextAreaInputProps) => {
 }
 
 export default TextAreaInput;
+
+
