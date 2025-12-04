@@ -66,7 +66,7 @@ const TextAreaInput = ({inputRef}: TextAreaInputProps) => {
                         left: `${caretPos.left}px`,
                         top: `${caretPos.top}px`
                     }}
-                    transition={{duration: 0.05, ease: "easeOut"}}
+                    transition={{duration: 0.04, ease: "easeOut"}}
                     style={{width: '0.85rem', height: '1.85rem'}}
                 />
                 <div className="relative z-10">
