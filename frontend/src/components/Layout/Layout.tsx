@@ -7,7 +7,7 @@ const Layout = () => {
     return (
         <div className="h-screen grid grid-rows-[auto_1fr_auto]
          text-text-primary dark:text-text-primary-dark
-         bg-background dark:bg-background-dark">
+         bg-background dark:bg-background-dark overflow-hidden">
             <header>
                 <Header/>
             </header>
