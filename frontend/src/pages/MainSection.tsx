@@ -15,17 +15,18 @@ const MainSection = () => {
              }}>
             <section className="relative w-full max-w-4xl mx-auto h-[400px]">
                 <div
-                    className="absolute inset-0 blur-[200px] bg-stone-900  dark:bg-stone-700 before:absolute before:inset-0"
+                    className="absolute blur-[180px] inset-0 bg-stone-900 dark:bg-stone-700"
                     style={{
                         clipPath: 'url(#heroClip)',
-                        transform: 'scale(1.004)',
+                        transform: 'scale(1.005)',
+                       
                     }}
                 />
                 <div
                     onClick={() => {
                         inputRef.current?.focus();
                     }}
-                    className="absolute inset-0 bg-typing-surface dark:bg-typing-surface-dark before:absolute before:inset-0"
+                    className="absolute inset-0 bg-typing-surface dark:bg-typing-surface-dark"
                     style={{
                         clipPath: 'url(#heroClip)',
                     }}
