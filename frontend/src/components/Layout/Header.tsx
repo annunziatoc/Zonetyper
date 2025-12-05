@@ -1,5 +1,5 @@
 import {Link} from 'react-router-dom';
-import {useTheme} from "../../contexts/ThemeContext.tsx";
+import {useTheme} from "../../providers/ThemeContext.tsx";
 
 
 const Header = () => {

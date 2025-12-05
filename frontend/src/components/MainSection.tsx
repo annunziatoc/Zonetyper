@@ -1,7 +1,6 @@
-import HeroMaskSvg from "../components/HeroMaskSvg.tsx";
 import TextAreaInput from "../components/TextAreaInput.tsx";
-
 import {useRef} from 'react';
+import HeroMaskSvg from "../assets/HeroMaskSvg.tsx";
 
 
 const MainSection = () => {

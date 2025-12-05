@@ -1,8 +1,8 @@
 import {BrowserRouter, Route, Routes} from "react-router-dom";
-import MainSection from "./pages/MainSection.tsx";
+import MainSection from "./components/MainSection.tsx";
 import Layout from "./components/Layout/Layout.tsx";
-import ErrorRoute from "./components/ErrorRoute.tsx";
-import {ThemeProvider} from "./contexts/ThemeContext.tsx";
+import ErrorRoute from "./components/Layout/ErrorRoute.tsx";
+import {ThemeProvider} from "./providers/ThemeContext.tsx";
 
 function App() {
 
