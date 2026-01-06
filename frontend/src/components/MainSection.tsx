@@ -18,13 +18,10 @@ const MainSection = () => {
                     style={{
                         clipPath: 'url(#heroClip)',
                         transform: 'scale(1.005)',
-                       
+
                     }}
                 />
                 <div
-                    onClick={() => {
-                        inputRef.current?.focus();
-                    }}
                     className="absolute inset-0 bg-typing-surface dark:bg-typing-surface-dark"
                     style={{
                         clipPath: 'url(#heroClip)',
@@ -55,3 +52,6 @@ const MainSection = () => {
 }
 
 export default MainSection
+
+
+

@@ -1,24 +1,23 @@
 import {useState, type RefObject, useRef, useEffect} from 'react';
 import {motion} from 'framer-motion';
+import usePassage from "../services/usePassage.ts";
 
 interface TextAreaInputProps {
     inputRef: RefObject<HTMLTextAreaElement | null>;
 }
 
 const TextAreaInput = ({inputRef}: TextAreaInputProps) => {
-    const rawStr = `On a Mars where ruthless corporate interests violently 
-    collide with a homegrown independence movement as Earth-based overlords 
-    battle for profits and power, Hakan Veil is an ex-professional enforcer 
-    equipped with military-grade body 
-    `
-        .trim().replace(/\s+/g, ' ').replace(/[–—]/g, '-');
-
-    const testStr = rawStr.length > 627 ? rawStr.slice(0, 627) + '...' : rawStr;
-
+    
+    
 
     const [textInput, setTextInput] = useState("")
     const [caretPos, setCaretPos] = useState({left: 0, top: 0})
     const charRefs = useRef<(HTMLSpanElement | null)[]>([])
+
+
+    const {passage} = usePassage();
+    const processedPassage = passage?.content.trim().replace(/\s+/g, ' ')
+        .replace(/[–—]/g, '-').slice(0,627) + (passage && passage.content.length > 627 ? '...': '');
 
     useEffect(() => {
         const currentChar = charRefs.current[textInput.length]
@@ -33,22 +32,21 @@ const TextAreaInput = ({inputRef}: TextAreaInputProps) => {
             }
         }
     }, [textInput.length])
-
+    
 
     function checkInput(index: number) {
         if (index >= textInput.length) return 'text-typing-surface-text dark:text-typing-surface-text-dark';
-        if (textInput[index] === testStr[index]) return 'text-text-success dark:text-text-success-dark';
+        if (textInput[index] === processedPassage[index]) return 'text-text-success dark:text-text-success-dark';
         return 'bg-bg-failure dark:bg-bg-failure-dark'
     }
-
-
+    
     return (
         <div className="relative w-full h-full">
             <textarea
                 ref={inputRef}
                 value={textInput}
                 onChange={(e) => {
-                    if (e.target.value.length <= testStr.length) {
+                    if (e.target.value.length <= processedPassage.length) {
                         setTextInput(e.target.value)
                     }
 
@@ -70,7 +68,7 @@ const TextAreaInput = ({inputRef}: TextAreaInputProps) => {
                     style={{width: '0.85rem', height: '1.85rem'}}
                 />
                 <div className="relative z-10">
-                    {testStr.split('').map((char, index) => (
+                    {processedPassage.split('').map((char, index) => (
                         <span
                             key={index}
                             ref={el => void (charRefs.current[index] = el)}
@@ -84,6 +82,7 @@ const TextAreaInput = ({inputRef}: TextAreaInputProps) => {
         </div>
     )
 }
+
 
 export default TextAreaInput;
 

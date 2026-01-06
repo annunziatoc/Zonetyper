@@ -1,41 +1,37 @@
-interface QuotableApiResponse{
-    _id?: string;
-    content: string;
-    author: string;
-    authorSlug?: string;
-    length?: number;
-    tags?: string[];
-}
+import axios from "axios";
+import { z } from 'zod';
+
+
+const QuoteSchema = z.object({
+    _id: z.string().optional(),
+    content: z.string(),
+    author: z.string(),
+    authorSlug: z.string().optional(),
+    length: z.number().optional() ,
+    tags: z.array(z.string()).optional(),
+});
+
+type QuotableApiResponse = z.infer<typeof QuoteSchema>;
 
 
 const fetchRandomPassage = async (): Promise<QuotableApiResponse> => {
 
     try {
-
-        const response = await fetch('https://api.quotable.io/quotes/random?minLength=100&maxLength=627');
-
-        if (!response.ok) {
-            throw new Error(`Error: ${response.status}`)
-        }
-
-        const array = await response.json()
-        const data = array[0];
-
-
+        const response = await axios.get('https://api.quotable.io/quotes/random?minLength=100&maxLength=627');
+        const validatedQS = QuoteSchema.parse(response.data[0]);
         return {
-            content: data.content,
-            author: data.author,
+            content: validatedQS.content,
+            author: validatedQS.author,
         };
-
     } catch (error) {
-        console.error('failed to fetch ',error);
+        console.error(error);
         throw error;
     }
-
 }
 
 
-export default fetchRandomPassage;
 
+
+export default fetchRandomPassage;
 
 

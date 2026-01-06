@@ -6,8 +6,7 @@ interface ThemeContextType {
 }
 
 const ThemeContext = createContext<ThemeContextType>({
-    toggleTheme: () => {
-    },
+    toggleTheme: () => {},
     darkMode: true
 });
 
