@@ -1,5 +1,5 @@
 import axios from "axios";
-import { z } from 'zod';
+import {z} from 'zod';
 
 
 const QuoteSchema = z.object({
@@ -7,7 +7,7 @@ const QuoteSchema = z.object({
     content: z.string(),
     author: z.string(),
     authorSlug: z.string().optional(),
-    length: z.number().optional() ,
+    length: z.number().optional(),
     tags: z.array(z.string()).optional(),
 });
 
@@ -28,8 +28,6 @@ const fetchRandomPassage = async (): Promise<QuotableApiResponse> => {
         throw error;
     }
 }
-
-
 
 
 export default fetchRandomPassage;

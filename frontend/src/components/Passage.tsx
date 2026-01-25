@@ -3,6 +3,7 @@ import usePassage from "../services/usePassage.ts";
 const passage = () => {
     
     
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     const {passage, error, loading} = usePassage();
 
     if (loading) return <div>Loading..</div>
@@ -16,7 +17,6 @@ const passage = () => {
 
 
 export default passage;
-
 
 
 

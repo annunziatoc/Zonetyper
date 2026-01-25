@@ -21,8 +21,6 @@ dist-ssr
 *.suo
 *.ntvs*
 *.njsproj
-*.slnx
-Backend/*.sln
 *.sw?
 .env
 
@@ -36,3 +34,4 @@ obj/
 *.userprefs
 [Dd]ebug/
 [Rr]elease/
+.fake

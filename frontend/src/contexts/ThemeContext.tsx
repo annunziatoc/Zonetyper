@@ -6,9 +6,11 @@ interface ThemeContextType {
 }
 
 const ThemeContext = createContext<ThemeContextType>({
-    toggleTheme: () => {},
-    darkMode: true
+    toggleTheme: () => {
+    },
+    darkMode: false
 });
+
 // eslint-disable-next-line react-refresh/only-export-components
 export const useTheme = () => {
     return useContext(ThemeContext)
@@ -27,12 +29,7 @@ export const ThemeProvider = ({children}: { children: ReactNode }) => {
 
     useEffect(() => {
         localStorage.setItem('theme', darkMode ? 'dark' : 'light')
-
-        if (darkMode) {
-            document.documentElement.classList.add('dark');
-        } else {
-            document.documentElement.classList.remove('dark');
-        }
+        document.documentElement.setAttribute('data-theme', darkMode ? 'dark' : 'light');
     }, [darkMode])
 
 
@@ -41,8 +38,6 @@ export const ThemeProvider = ({children}: { children: ReactNode }) => {
             {children}</ThemeContext.Provider>
     )
 }
-
-
 
 
 

@@ -7,13 +7,10 @@ interface TextAreaInputProps {
 }
 
 const TextAreaInput = ({inputRef}: TextAreaInputProps) => {
-    
-    
 
     const [textInput, setTextInput] = useState("")
     const [caretPos, setCaretPos] = useState({left: 0, top: 0})
     const charRefs = useRef<(HTMLSpanElement | null)[]>([])
-
 
     const {passage} = usePassage();
     const processedPassage = passage?.content.trim().replace(/\s+/g, ' ')
