@@ -25,6 +25,7 @@ dist-ssr
 .env
 
 # .NET
+out/
 bin/
 obj/
 *.user
