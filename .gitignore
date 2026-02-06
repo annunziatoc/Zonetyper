@@ -36,3 +36,5 @@ obj/
 [Dd]ebug/
 [Rr]elease/
 .fake
+appsettings.Development.json
+appsettings.*.json
