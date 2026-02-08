@@ -20,6 +20,6 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v4
         with:
-          context: .
+          context: ./Backend
           push: true
           tags: ztregistry.azurecr.io/zonetyper:latest
