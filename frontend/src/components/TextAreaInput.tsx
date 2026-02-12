@@ -30,7 +30,6 @@ const TextAreaInput = ({inputRef}: TextAreaInputProps) => {
         }
     }, [textInput.length])
     
-
     function checkInput(index: number) {
         if (index >= textInput.length) return 'text-typing-surface-text dark:text-typing-surface-text-dark';
         if (textInput[index] === processedPassage[index]) return 'text-text-success dark:text-text-success-dark';

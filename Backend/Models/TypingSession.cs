@@ -12,3 +12,5 @@ public class TypingSession
     public int ErrorCount { get; set; }
     public DateTime CompletedAt { get; set; }
 }
+
+
