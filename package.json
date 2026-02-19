@@ -1,1 +1,5 @@
-{}
+{
+  "dependencies": {
+    "@fluentui/react": "^8.125.4"
+  }
+}
