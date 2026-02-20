@@ -1,17 +1,17 @@
 services:
   frontend:
-    build: ./Frontend
+    build: ./client
     container_name: zonetyper-frontend
     ports:
       - "5173:5173"
     volumes:
-      - ./Frontend:/app
+      - ./client:/app
       - /app/node_modules
     depends_on:
       - backend
   
   backend:
-    build: ./Backend
+    build: ./server
     container_name: zonetyper-backend
     ports:
       - "5000:5000"

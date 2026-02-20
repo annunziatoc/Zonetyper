@@ -1,11 +1,9 @@
-import s from './homePage.module.css'
+import styles from './homePage.module.css'
 
 const HomePage = () => {
 
     return (
-        <>
-            <div className={s.hey}>hey</div>
-        </>
+            <div className={styles.hey}>main content</div>
     )
 
 }
