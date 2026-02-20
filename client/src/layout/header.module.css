@@ -1,5 +1,49 @@
 
 
-header {
-    border: 1px solid rgb(217, 228, 58);
+.header {
+    /* border: 1px solid rgb(217, 228, 58); */
+    padding: 10px;
+    
+
 }
+
+.nav {
+    display:flex;
+    justify-content: space-between;
+    padding-inline: 0.25rem;
+
+    padding-block: 0.15rem;
+    width: 100%;
+    max-width: 64rem;
+    margin-inline: auto;
+}
+
+
+.nav-items {
+    border: 1px solid;
+    display: flex;
+    gap: 1rem;
+    font-family: var(--font-nav-items);
+}
+
+
+.logo{
+    display: flex;
+    gap: 10px;
+    font-size: large;
+}
+
+.logo-zone {
+    font-family: var(--font-display);
+    position: relative;
+
+}
+
+
+
+.logo-typer{
+    font-family: var(--font-display);
+    position: relative;
+    color: var(--bg-failure);
+}
+

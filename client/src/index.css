@@ -6,20 +6,38 @@
   box-sizing: border-box;
 }
 
-body {
-  margin: 0;
-  line-height: inherit;
-  height: 100vh;
-  background-color: var(--primary);
-  color: white;
+html {
+  background-color: var(--background);
+  color: var(--text-primary)
 }
+
+body {
+  line-height: inherit;
+}
+
 
 
 :root {
 
-  --primary: #191a1c;
+  color-scheme: light dark;
+
+  --font-mono: 'Roboto Mono', ui-monospace, monospace;
+  --font-display: 'Audiowide', ui-sans-serif, sans-serif;
+  --font-nav-items: 'Recursive', sans-serif;
+
+  --background: light-dark(#dbd6d6, #191a1c);
+  --surface: light-dark(#f8f9fa, #31748F);
+  --typing-surface: light-dark(#b2b4b8, oklch(0.26 0.0041 84.59));
+  --typing-surface-text: light-dark(oklch(0.45 0.0041 84.59), oklch(0.70 0.006 286.286));
+  --text-primary: light-dark(#1a1a1a, oklch(92% 0.001 286.375));
+  --text-secondary: light-dark(#6b7280, #95AFC7);
+  --caret-background: light-dark(oklch(0.67 0.0 93.27), oklch(0.47 0.015 93.27));
+  --text-success: light-dark(oklch(0.5709 0.28 251.58), oklch(0.63 0.16 245));
+  --bg-failure: light-dark(oklch(0.62 0.2681 19.38), oklch(0.63 0.2681 19.38));
+  --action: light-dark(#d63384, #CB6583);
+  --interactive: light-dark(#0d6efd, #6E87EE);
+  --success: light-dark(#198754, #5FB3B4);
+  --border: light-dark(#dee2e6, #6E6A86);
 
 
 }
-
-
