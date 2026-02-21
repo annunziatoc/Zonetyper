@@ -1,18 +1,13 @@
 
 
 .header {
-    /* border: 1px solid rgb(217, 228, 58); */
-    padding: 10px;
-    
-
 }
 
 .nav {
     display:flex;
     justify-content: space-between;
-    padding-inline: 0.25rem;
-
-    padding-block: 0.15rem;
+    padding-inline: 3rem;
+    padding-block: 0.75rem;
     width: 100%;
     max-width: 64rem;
     margin-inline: auto;
@@ -20,10 +15,11 @@
 
 
 .nav-items {
-    border: 1px solid;
     display: flex;
     gap: 1rem;
     font-family: var(--font-nav-items);
+    font-size: medium;
+    cursor: pointer;
 }
 
 
@@ -31,6 +27,7 @@
     display: flex;
     gap: 10px;
     font-size: large;
+    cursor: pointer;
 }
 
 .logo-zone {
@@ -47,3 +44,6 @@
     color: var(--bg-failure);
 }
 
+.theme-toggle {
+   
+}

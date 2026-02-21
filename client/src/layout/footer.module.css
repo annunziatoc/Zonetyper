@@ -1,3 +1,40 @@
-footer {
-   border: 1px solid rgb(15, 186, 15); 
+.footer {
+    display:flex;
+    padding-inline: 5.25rem;
+    padding-block: 0.35rem;
+    width: 100%;
+    max-width: 64rem;
+    margin-inline: auto;
+    font-family: var(--font-mono);
+    font-size: x-small;
+    gap: 1rem;
+}
+
+
+
+.guide {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    color: var(--footer-guide);
+
+   
+    
+}
+
+.tab {
+     padding: 8px;
+    border: 1px solid;
+    color: var(--footer-guide);
+    background-color: var(--typing-surface);
+    border-radius: 4px 8px 4px 8px;
+}
+
+
+.click {
+     padding: 8px;
+    border: 1px solid;
+    color: var(--footer-guide);
+    background-color: var(--typing-surface);
+    border-radius: 4px 8px 4px 8px;
 }
