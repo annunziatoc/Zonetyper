@@ -1,5 +1,5 @@
 .footer {
-    display:flex;
+    display: flex;
     padding-inline: 5.25rem;
     padding-block: 0.35rem;
     width: 100%;
@@ -10,31 +10,31 @@
     gap: 1rem;
 }
 
-
-
 .guide {
     display: flex;
     gap: 10px;
     align-items: center;
     color: var(--footer-guide);
 
-   
-    
 }
 
 .tab {
-     padding: 8px;
-    border: 1px solid;
+    padding: 8px;
+    border: 1px solid light-dark(rgba(128, 128, 128, 0.519), rgba(128, 128, 128, 0.241));
     color: var(--footer-guide);
+    cursor: pointer;
     background-color: var(--typing-surface);
     border-radius: 4px 8px 4px 8px;
+    box-shadow: 2px 2px 1px 0px light-dark(rgba(95, 95, 95, 0.537), rgba(130, 130, 130, 0.209));
+
 }
 
-
 .click {
-     padding: 8px;
-    border: 1px solid;
+    cursor: pointer;
+    padding: 8px;
+    border: 1px solid light-dark(rgba(128, 128, 128, 0.519), rgba(128, 128, 128, 0.241));
     color: var(--footer-guide);
     background-color: var(--typing-surface);
     border-radius: 4px 8px 4px 8px;
+    box-shadow: 2px 2px 1px 0px light-dark(rgba(95, 95, 95, 0.537), rgba(130, 130, 130, 0.209));
 }
