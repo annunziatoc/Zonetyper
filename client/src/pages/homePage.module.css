@@ -4,7 +4,7 @@
     align-items: center;
 }
 
-.typingSurface {
+.typingMask {
     display: flex;
     justify-content: center;
     height: 23rem;
@@ -20,11 +20,21 @@
     /* clip-path: path("M 250,36 L 400,0 L 500,0 L 550,36 Z"); */
 }
 
-.typingSurface::before {
+.typingMask::before {
     content: '';
     inset: 0;
     position: absolute;
     background-image: url('../assets/texture_mask.svg');
     opacity: 0.03;
 
+}
+
+.surface {
+    display: flex;
+    width: 100%;
+    margin: 2rem;
+    margin-top: 2.5rem;
+    color: var(--typing-surface-text);
+    font-family: var(--font-mono);
+    font-size: 1.30rem;
 }

@@ -28,7 +28,7 @@ body {
   --background: light-dark(#e1dddd, #191a1c);
   --surface: light-dark(#f8f9fa, #31748F);
   --typing-surface: light-dark(#90949c94, rgba(90, 96, 109, 0.203));
-  --typing-surface-text: light-dark(oklch(0.45 0.0041 84.59), oklch(0.70 0.006 286.286));
+  --typing-surface-text: light-dark(oklch(42.05% 0.00348 84.489), oklch(73.282% 0.00578 286.049));
   --text-primary: light-dark(#1a1a1a, oklch(92% 0.001 286.375));
   --text-secondary: light-dark(#6b7280, #95AFC7);
   --caret-background: light-dark(oklch(0.67 0.0 93.27), oklch(0.47 0.015 93.27));
@@ -39,7 +39,4 @@ body {
   --success: light-dark(#198754, #5FB3B4);
   --border: light-dark(#dee2e6, #6E6A86);
   --footer-guide: light-dark(#646262,#8d8d8e);
-  --
-
-
 }
