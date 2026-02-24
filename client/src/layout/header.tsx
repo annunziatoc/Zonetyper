@@ -23,12 +23,20 @@ const Header = () => {
                     <span className={styles['logo-zone']}>[ Z o n e </span>
                     <span className={styles['logo-typer']}>T y p e r ]</span>
                 </div>
-                <div className={styles['nav-items']}>
-                    <span>Race</span>
-                    <span>Leaderboard</span>
-                    <span>Profile</span>
-                    <span onClick={() => setTheme(t => t === 'light' ? 'dark' : 'light')}>Theme</span>
-                </div>
+                <ul className={styles['nav-items']}>
+                    <li>
+                        <span>Race</span>
+                    </li>
+                    <li>
+                        <span>Leaderboard</span>
+                    </li>
+                    <li>
+                        <span>Profile</span>
+                    </li>
+                    <li onClick={() => setTheme(t => t === 'light' ? 'dark' : 'light')}>
+                        <span>Theme</span>
+                    </li>
+                </ul>
             </nav>
         </header>
     )

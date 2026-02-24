@@ -16,6 +16,36 @@
     cursor: pointer;
 }
 
+.nav-items>li {
+    position: relative;
+    padding: 7px;
+    margin: -7px;
+    list-style: none;
+}
+
+.nav-items>li>span{
+    position: relative;
+    display: inline-block;
+    
+}
+
+.nav-items>li>span::after {
+    position: absolute;
+    content: '';
+    height: 0.25rem;
+    width: 0%;
+    background-color: var(--bg-failure);
+    transform: skew(-30deg);
+    transition: width 0.2s;
+    inset: auto 0 -6px 0;
+}
+
+
+.nav-items>li>span:hover::after {
+    width: 100%;
+}
+
+
 .logo {
     display: flex;
     gap: 10px;
@@ -35,6 +65,4 @@
     color: var(--bg-failure);
 }
 
-.logo-animate {
-    
-}
+.logo-animate {}
