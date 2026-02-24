@@ -2,6 +2,7 @@
     display: flex;
     padding-inline: 5.25rem;
     padding-block: 0.35rem;
+    padding-bottom: 0.5rem;
     width: 100%;
     max-width: 64rem;
     margin-inline: auto;
