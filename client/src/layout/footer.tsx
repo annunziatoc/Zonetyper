@@ -9,14 +9,11 @@ const Footer = () => {
                 <div className={styles.tab}>Tab</div>
                 <div>To Restart</div>
             </div>
-
-                <div className={styles.guide}>
+            <div className={styles.guide}>
                 <div className={styles.click}>Click</div>
                 <div>Screen To Gain Focus</div>
             </div>
 
-
-            
         </footer>
 
     )
