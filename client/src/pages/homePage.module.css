@@ -30,15 +30,24 @@
 }
 
 .surface {
-    display: flex;
     width: 100%;
     margin: 2rem;
     margin-top: 2.5rem;
     color: var(--typing-surface-text);
     font-family: var(--font-mono);
     font-size: 1.30rem;
+    border: 1px solid red;
 }
 
-.charSpan {
-    
+.correct{
+    color: chartreuse;
+}
+
+.incorrect{
+    color: red;
+}
+
+.caret{
+  position: fixed;  
+  border: 1px solid red;
 }
