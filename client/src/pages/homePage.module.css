@@ -37,5 +37,8 @@
     color: var(--typing-surface-text);
     font-family: var(--font-mono);
     font-size: 1.30rem;
-    border: 1px solid red;
+}
+
+.charSpan {
+    
 }
