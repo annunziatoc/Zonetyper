@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import styles from './homePage.module.css'
-
+import { motion } from "framer-motion"
 const HomePage = () => {
 
     interface CharState {
@@ -9,10 +9,10 @@ const HomePage = () => {
         id: string;
     }
 
+    const surfaceRef = useRef<HTMLDivElement>(null)
     const caretRef = useRef<HTMLSpanElement>(null);
-    const [cursorPos, setCursorPos] = useState({top: 0, left: 0, height: 0, width: 0})
-    const [textOnScreen] = useState(`"Culture is like a smog. To live within it,
-         you must breathe some of it in and, inevitably, be contaminated."`)
+    const [cursorPos, setCursorPos] = useState({ top: 0, left: 0, height: 0, width: 0 })
+    const [textOnScreen] = useState(`"Culture is like a smog. To live within it, you must breathe some of it in and, inevitably, be contaminated."`)
     const [currIdx, setCurrIdx] = useState(0);
     const [charsArr, setCharsArr] = useState<CharState[]>(
         textOnScreen.split('').map((char) => ({
@@ -22,17 +22,26 @@ const HomePage = () => {
         }))
     )
 
-
     useEffect(() => {
         const rect = caretRef.current?.getBoundingClientRect()
         if (!rect) return
-        setCursorPos({ top: rect.top, left: rect.left, height: rect.height, width: rect.width })
-    },[currIdx])
+        setCursorPos({ top: rect.top, left: rect.left, height: rect.height, width: Math.max(rect.width, 13) })
+    }, [currIdx])
+
+    useEffect(() => {
+        const handleResize = () => {
+            const rect = caretRef.current?.getBoundingClientRect()
+            if (!rect) return
+            setCursorPos({ top: rect.top, left: rect.left, height: rect.height, width: Math.max(rect.width, 13) })
+        }
+        window.addEventListener('resize', handleResize)
+        return () => window.removeEventListener('resize', handleResize)
+    }, [])
 
     return (
-        <main className={styles.main}>
+        <main className={styles.main} onClick={() => surfaceRef.current?.focus()}>
             <div className={styles.typingMask}>
-                <div onKeyDown={(ev) => {
+                <div ref={surfaceRef} onKeyDown={(ev) => {
 
                     switch (ev.key) {
                         //if chars match
@@ -79,13 +88,16 @@ const HomePage = () => {
                     {charsArr.map((cs, i) => (
                         <span key={cs.id} className={cs.status === true ? styles.correct : cs.status === false ? styles.incorrect : ''} ref={i === currIdx ? caretRef : null}>{cs.char}</span>
                     ))}
-                    <div className={styles.caret} style={{position: 'fixed', top: cursorPos.top, left: cursorPos.left, height: cursorPos.height, width: cursorPos.width}}/>
+                    <motion.div
+                        style={{ position: 'fixed' }}
+                        className={styles.caret}
+                        animate={{ top: cursorPos.top, left: cursorPos.left, height: cursorPos.height, width: cursorPos.width }}
+                        transition={{ duration: 0.04, ease: 'easeOut' }} />
                 </div>
             </div>
         </main >
     )
 
 }
-
 
 export default HomePage;

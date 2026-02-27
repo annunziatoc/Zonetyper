@@ -34,7 +34,7 @@
     content: '';
     height: 0.25rem;
     width: 0%;
-    background-color: var(--bg-failure);
+    background-color: var(--text-failure);
     transform: skew(-30deg);
     transition: width 0.2s;
     inset: auto 0 -6px 0;
@@ -62,7 +62,7 @@
 .logo-typer {
     font-family: var(--font-display);
     position: relative;
-    color: var(--bg-failure);
+    color: var(--text-failure);
 }
 
 .logo-animate {}

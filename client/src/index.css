@@ -31,9 +31,9 @@ body {
   --typing-surface-text: light-dark(oklch(42.05% 0.00348 84.489), oklch(73.282% 0.00578 286.049));
   --text-primary: light-dark(#1a1a1a, oklch(92% 0.001 286.375));
   --text-secondary: light-dark(#6b7280, #95AFC7);
-  --caret-background: light-dark(oklch(0.67 0.0 93.27), oklch(0.47 0.015 93.27));
-  --text-success: light-dark(oklch(0.5709 0.28 251.58), oklch(0.63 0.16 245));
-  --bg-failure: light-dark(oklch(0.62 0.2681 19.38), oklch(0.63 0.2681 19.38));
+  --caret-background: light-dark(oklch(70.479% 0.01298 96.533), oklch(43.758% 0.00967 99.117));
+  --text-success: light-dark(oklch(57.105% 0.23631 260.272), oklch(65.721% 0.16625 245.236));
+  --text-failure: light-dark(oklch(0.62 0.2681 19.38), oklch(0.63 0.2681 19.38));
   --action: light-dark(#d63384, #CB6583);
   --interactive: light-dark(#0d6efd, #6E87EE);
   --success: light-dark(#198754, #5FB3B4);

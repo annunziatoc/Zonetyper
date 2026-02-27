@@ -2,6 +2,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    
 }
 
 .typingMask {
@@ -10,13 +11,8 @@
     height: 23rem;
     width: 50rem;
     background-color: var(--typing-surface);
-    /* background-color: rgba(90, 96, 109, 0.203); */
-    /* border-radius: 15px; */
     position: relative;
     clip-path: path("M 0 30 C 0 24 6 18 14 18 H 304 C 315 18 326 14 334 7 C 340 3 348 0 356 0 H 444 C 452 0 460 3 466 7 C 474 14 485 18 496 18 H 786 C 794 18 800 24 800 30 V 344 C 800 350 794 356 786 356 H 682 C 678 356 675 359 670 365 C 667 367 664 368 657 368 H 143 C 140 368 136 367 130 365 C 125 359 122 356 118 356 H 14 C 6 356 0 350 0 344 Z");
-
-
-    /* clip-path: path("M 250,36 L 400,0 L 500,0 L 550,36 Z"); */
 }
 
 
@@ -36,18 +32,23 @@
     color: var(--typing-surface-text);
     font-family: var(--font-mono);
     font-size: 1.30rem;
-    border: 1px solid red;
 }
 
 .correct{
-    color: chartreuse;
+    color: var(--text-success);
 }
 
 .incorrect{
-    color: red;
+    background-color: var(--text-failure);
 }
 
 .caret{
   position: fixed;  
-  border: 1px solid red;
+  background-color: var(--caret-background);
+  z-index: -1;
+}
+
+.surface:focus {
+    outline: none;
+    user-select: none;
 }
