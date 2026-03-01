@@ -38,5 +38,5 @@ body {
   --interactive: light-dark(#0d6efd, #6E87EE);
   --success: light-dark(#198754, #5FB3B4);
   --border: light-dark(#dee2e6, #6E6A86);
-  --footer-guide: light-dark(#646262,#8d8d8e);
+  --footer-guide: light-dark(#646262, #8d8d8e);
 }
