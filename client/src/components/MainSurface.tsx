@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import styles from './mainSurface.module.css'
+import styles from './MainSurface.module.css'
 import { motion } from "framer-motion"
 const MainSurface = ({ surfaceRef }: { surfaceRef: React.RefObject<HTMLDivElement | null> }) => {
 
