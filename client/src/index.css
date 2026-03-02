@@ -16,7 +16,6 @@ body {
 }
 
 
-
 :root {
 
   color-scheme: light dark;
@@ -29,6 +28,9 @@ body {
   --surface: light-dark(#f8f9fa, #31748F);
   --typing-surface: light-dark(#90949c94, rgba(90, 96, 109, 0.203));
   --typing-surface-text: light-dark(oklch(42.05% 0.00348 84.489), oklch(73.282% 0.00578 286.049));
+
+  --timer-text: light-dark(oklch(33.265% 0.0038 264.586 / 0.688), oklch(73.282% 0.00578 286.049 / 0.825));
+
   --text-primary: light-dark(#1a1a1a, oklch(92% 0.001 286.375));
   --text-secondary: light-dark(#6b7280, #95AFC7);
   --caret-background: light-dark(oklch(70.479% 0.01298 96.533), oklch(43.758% 0.00967 99.117));
