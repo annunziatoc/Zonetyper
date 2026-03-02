@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import styles from './mainSurface.module.css'
 import { motion } from "framer-motion"
-const MainSurface = () => {
+const MainSurface = ({ surfaceRef }: { surfaceRef: React.RefObject<HTMLDivElement | null> }) => {
 
     interface CharState {
         char: string;
@@ -9,11 +9,10 @@ const MainSurface = () => {
         id: string;
     }
 
-    const surfaceRef = useRef<HTMLDivElement>(null)
+  
     const caretRef = useRef<HTMLSpanElement>(null);
     const [cursorPos, setCursorPos] = useState({ top: 0, left: 0, height: 0, width: 0 })
-    const [textOnScreen] = useState(`"Culture is like a smog. To live within it,
-         you must breathe some of it in and, inevitably, be contaminated."`)
+    const [textOnScreen] = useState(`"Culture is like a smog. To live within it, you must breathe some of it in and, inevitably, be contaminated."`)
     const [currIdx, setCurrIdx] = useState(0);
     const [charsArr, setCharsArr] = useState<CharState[]>(
         textOnScreen.split('').map((char) => ({
@@ -45,8 +44,12 @@ const MainSurface = () => {
         return () => window.removeEventListener('resize', handleResize)
     }, [])
 
+    useEffect(() => {
+        surfaceRef.current?.focus()
+    }, [])
+
     return (
-        <main className={styles.mainSurface} onClick={() => surfaceRef.current?.focus()}>
+        <main className={styles.mainSurface}>
             <div className={styles.typingMask}>
                 <div ref={surfaceRef} onKeyDown={(ev) => {
 
@@ -79,7 +82,7 @@ const MainSurface = () => {
                             setCurrIdx(0)
                             break;
                         }
-                            
+
                         // the crux of the typing validation
                         case charsArr[currIdx].char: {
                             setCharsArr((prev) => prev.map((cs, i) => {
@@ -89,7 +92,7 @@ const MainSurface = () => {
 
                             break;
                         }
-                            
+
                         //dont process non-single char keyboard commands
                         default: {
                             if (ev.key.length !== 1) break

@@ -1,8 +1,25 @@
-
-
 .mainPage {
     display: flex;
-    border: 1px solid red;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    
 }
+
+
+.typingSpeedWrapper {
+    width: 52rem;
+}
+
+
+.timer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 2rem;
+    width: 3rem;
+    font-family: var(--font-nav-items);
+    font-weight: 200;
+}
+
+.wpm {}

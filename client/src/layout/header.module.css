@@ -48,9 +48,10 @@
 
 .logo {
     display: flex;
-    gap: 10px;
+    gap: 8px;
     font-size: large;
     cursor: pointer;
+    letter-spacing: -0.01em;
 }
 
 .logo-zone {
@@ -63,6 +64,7 @@
     font-family: var(--font-display);
     position: relative;
     color: var(--text-failure);
+
 }
 
 .logo-animate {}
