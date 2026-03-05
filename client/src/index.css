@@ -41,4 +41,8 @@ body {
   --success: light-dark(#198754, #5FB3B4);
   --border: light-dark(#dee2e6, #6E6A86);
   --footer-guide: light-dark(#646262, #8d8d8e);
+
+
+  --button-background: light-dark(var(--interactive), #0e56c3);
+  --button-text-color: light-dark(#ffffff, var(--text-primary));
 }

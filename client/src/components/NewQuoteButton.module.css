@@ -1,0 +1,16 @@
+
+
+
+.newQuoteButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--button-background);
+    color: var(--button-text-color);
+    cursor: pointer;
+    border-radius: 5px 5px 5px 5px;
+    padding: 0.5rem;
+    user-select: none;
+    font-family: var(--font-mono);
+    font-weight: 400;
+}

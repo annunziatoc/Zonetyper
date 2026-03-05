@@ -1,7 +1,12 @@
 import { useState, useRef, useEffect } from "react";
 import styles from './MainSurface.module.css'
 import { motion } from "framer-motion"
+import useTypingStore from "../store/useTypingStore";
+import { getNewText } from "../services/typingApi";
 const MainSurface = ({ surfaceRef }: { surfaceRef: React.RefObject<HTMLDivElement | null> }) => {
+
+    const { typingText, setTypingText } = useTypingStore();
+
 
     interface CharState {
         char: string;
@@ -9,18 +14,10 @@ const MainSurface = ({ surfaceRef }: { surfaceRef: React.RefObject<HTMLDivElemen
         id: string;
     }
 
-  
     const caretRef = useRef<HTMLSpanElement>(null);
     const [cursorPos, setCursorPos] = useState({ top: 0, left: 0, height: 0, width: 0 })
-    const [textOnScreen] = useState(`"Culture is like a smog. To live within it, you must breathe some of it in and, inevitably, be contaminated."`)
     const [currIdx, setCurrIdx] = useState(0);
-    const [charsArr, setCharsArr] = useState<CharState[]>(
-        textOnScreen.split('').map((char) => ({
-            char,
-            status: null,
-            id: crypto.randomUUID()
-        }))
-    )
+    const [charsArr, setCharsArr] = useState<CharState[]>([])
 
     useEffect(() => {
         const rect = caretRef.current?.getBoundingClientRect()
@@ -48,10 +45,28 @@ const MainSurface = ({ surfaceRef }: { surfaceRef: React.RefObject<HTMLDivElemen
         surfaceRef.current?.focus()
     }, [])
 
+
+    useEffect(() => {
+        setCharsArr(typingText.split('').map((char) => ({
+            char,
+            status: null,
+            id: crypto.randomUUID()
+        })))
+        setCurrIdx(0)
+    }, [typingText])
+
+    useEffect(() => {
+        const init = async () => {
+            const newText = await getNewText();
+            setTypingText(newText)
+        }
+        init();
+    }, [])
+    
     return (
         <main className={styles.mainSurface}>
             <div className={styles.typingMask}>
-                <div ref={surfaceRef} onKeyDown={(ev) => {
+                <div ref={surfaceRef} onKeyDown={async (ev) => {
 
                     switch (ev.key) {
                         //if chars match
@@ -76,9 +91,9 @@ const MainSurface = ({ surfaceRef }: { surfaceRef: React.RefObject<HTMLDivElemen
                         }
 
                         case 'Tab': {
-                            setCharsArr((prev) => prev.map((cs, i) => {
-                                return i === currIdx ? { ...cs, status: null } : cs
-                            }))
+                            ev.preventDefault();
+                            const newText = await getNewText();
+                            setTypingText(newText)
                             setCurrIdx(0)
                             break;
                         }
