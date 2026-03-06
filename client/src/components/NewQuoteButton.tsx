@@ -3,9 +3,9 @@ import { getNewText } from '../services/typingApi'
 import styles from './NewQuoteButton.module.css'
 
 
-const NewTextButton = () => {
+const NewQuoteButton = () => {
 
-    const { setTypingText } = useTypingStore();
+    const { setSourceText: setTypingText } = useTypingStore();
 
     const handleClick = async () => {
         const result = await getNewText()
@@ -20,4 +20,4 @@ const NewTextButton = () => {
 }
 
 
-export default NewTextButton;
+export default NewQuoteButton;

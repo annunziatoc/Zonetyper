@@ -14,7 +14,7 @@
 
         catch (error) {
             console.error((error));
-            return '';
+            return 'Culture is like a smog. To live within it, you must breathe some of it in and, inevitably, be contaminated.';
         }
     }
 

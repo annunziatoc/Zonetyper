@@ -1,72 +1,36 @@
-import { useState, useRef, useEffect } from "react";
+import { useRef, useEffect } from "react";
 import styles from './MainSurface.module.css'
 import { motion } from "framer-motion"
 import useTypingStore from "../store/useTypingStore";
 import { getNewText } from "../services/typingApi";
+import { useCaretPosition } from "../hooks/useCaretPosition";
+import { useTypingSession } from "../hooks/useTypingSession";
 const MainSurface = ({ surfaceRef }: { surfaceRef: React.RefObject<HTMLDivElement | null> }) => {
 
-    const { typingText, setTypingText } = useTypingStore();
-
-
-    interface CharState {
-        char: string;
-        status: null | true | false;
-        id: string;
-    }
+    const {setSourceText, currIdx, setCurrIdx,
+        charsArr, setCharsArr, startTime, setStartTime } = useTypingStore();
 
     const caretRef = useRef<HTMLSpanElement>(null);
-    const [cursorPos, setCursorPos] = useState({ top: 0, left: 0, height: 0, width: 0 })
-    const [currIdx, setCurrIdx] = useState(0);
-    const [charsArr, setCharsArr] = useState<CharState[]>([])
+    const caretPos = useCaretPosition(caretRef, currIdx)
+    useTypingSession();
 
-    useEffect(() => {
-        const rect = caretRef.current?.getBoundingClientRect()
-        if (!rect) return
-        setCursorPos({
-            top: rect.top, left: rect.left, height: rect.height,
-            width: Math.max(rect.width, 13)
-        })
-    }, [currIdx])
 
-    useEffect(() => {
-        const handleResize = () => {
-            const rect = caretRef.current?.getBoundingClientRect()
-            if (!rect) return
-            setCursorPos({
-                top: rect.top, left: rect.left, height: rect.height,
-                width: Math.max(rect.width, 13)
-            })
-        }
-        window.addEventListener('resize', handleResize)
-        return () => window.removeEventListener('resize', handleResize)
-    }, [])
+    //focus the screen to the surfaceRef -> div
 
     useEffect(() => {
         surfaceRef.current?.focus()
     }, [])
 
 
-    useEffect(() => {
-        setCharsArr(typingText.split('').map((char) => ({
-            char,
-            status: null,
-            id: crypto.randomUUID()
-        })))
-        setCurrIdx(0)
-    }, [typingText])
 
-    useEffect(() => {
-        const init = async () => {
-            const newText = await getNewText();
-            setTypingText(newText)
-        }
-        init();
-    }, [])
-    
     return (
         <main className={styles.mainSurface}>
             <div className={styles.typingMask}>
                 <div ref={surfaceRef} onKeyDown={async (ev) => {
+
+                    if (currIdx === 0 && startTime === 0) setStartTime(Date.now())
+
+                    // if(currIdx >= charsArr.length) return
 
                     switch (ev.key) {
                         //if chars match
@@ -93,8 +57,8 @@ const MainSurface = ({ surfaceRef }: { surfaceRef: React.RefObject<HTMLDivElemen
                         case 'Tab': {
                             ev.preventDefault();
                             const newText = await getNewText();
-                            setTypingText(newText)
-                            setCurrIdx(0)
+                            setSourceText(newText)
+                            setCurrIdx(() => 0)
                             break;
                         }
 
@@ -104,7 +68,6 @@ const MainSurface = ({ surfaceRef }: { surfaceRef: React.RefObject<HTMLDivElemen
                                 return i === currIdx ? { ...cs, status: true } : cs
                             }))
                             setCurrIdx((curr) => curr + 1)
-
                             break;
                         }
 
@@ -130,8 +93,8 @@ const MainSurface = ({ surfaceRef }: { surfaceRef: React.RefObject<HTMLDivElemen
                         style={{ position: 'fixed' }}
                         className={styles.caret}
                         animate={{
-                            top: cursorPos.top, left: cursorPos.left,
-                            height: cursorPos.height, width: cursorPos.width
+                            top: caretPos.top, left: caretPos.left,
+                            height: caretPos.height, width: caretPos.width
                         }}
                         transition={{ duration: 0.04, ease: 'easeOut' }} />
                 </div>

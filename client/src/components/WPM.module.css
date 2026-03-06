@@ -1,5 +1,10 @@
 .wpm {
-
-
-    
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    height: 2rem;
+    width: auto;
+    font-family: var(--font-nav-items);
+    font-weight: 500;
+    color: var(--timer-text);
 }

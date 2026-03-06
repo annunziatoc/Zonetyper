@@ -4,7 +4,8 @@ import styles from './Timer.module.css'
 const Timer = () => {
 
     const MAX_SECONDS = 600;
-    const [timer, setTimer] = useState(0)
+
+        const [timer, setTimer] = useState(0)
 
     useEffect(() => {
         const interval = setInterval(() => {
