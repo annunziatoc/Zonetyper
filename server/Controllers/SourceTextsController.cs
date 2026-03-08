@@ -43,8 +43,6 @@ public class SourceTextsController : ControllerBase
                     return Ok(new { text = quotes[0].Quote });
                 }
             }
-
-
         }
 
         catch { }
