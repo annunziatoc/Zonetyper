@@ -26,7 +26,6 @@ public class SourceTextsController : ControllerBase
     [HttpGet("random")]
     public async Task<IActionResult> GetRandom()
     {
-
         try
         {
             var client = _httpClientFactory.CreateClient();
@@ -39,20 +38,15 @@ public class SourceTextsController : ControllerBase
                 var quotes = JsonSerializer.Deserialize<List<NinjaQuote>>(json, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
 
                 if (quotes?.Count > 0)
-                {
                     return Ok(new { text = quotes[0].Quote });
-                }
             }
+
+            return StatusCode(502, "Failed to fetch quote");
         }
-
-        catch { }
-
-        var count = await _db.SourceTexts.CountAsync();
-        if (count == 0) return NotFound("No source texts available");
-        var skip = new Random().Next(count);
-
-        var sourceText = await _db.SourceTexts.Skip(skip).FirstAsync();
-        return Ok(new { text = sourceText.Text });
+        catch (Exception ex)
+        {
+            return StatusCode(502, ex.Message);
+        }
     }
 
     record NinjaQuote(string Quote);
