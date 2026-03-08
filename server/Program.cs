@@ -38,6 +38,9 @@ app.MapPost("/api/sourceText", async (SourceText sourceText, ZonetyperDbContext 
 
 
 
+
+
+//deploy server
 app.Run();
 
 
