@@ -52,3 +52,5 @@ public class SourceTextsController : ControllerBase
     record NinjaQuote(string Quote);
 
 }
+
+
