@@ -8,17 +8,16 @@ const Timer = () => {
         const [timer, setTimer] = useState(0)
 
     useEffect(() => {
+        
         const interval = setInterval(() => {
-            setTimer((prev) => prev + 1)
+            setTimer((prev) => {
+                if(prev >= MAX_SECONDS) clearInterval(interval)
+                return prev + 1
+            })
         }, 1000)
-
-        const timeout = setTimeout(() => {
-            clearInterval(interval)
-        }, MAX_SECONDS * 1000)
 
         return () => {
             clearInterval(interval)
-            clearTimeout(timeout)
         }
 
     }, [])

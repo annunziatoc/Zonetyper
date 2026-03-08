@@ -1,6 +1,7 @@
 using System.Text.Json;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Query.SqlExpressions;
 
 [ApiController]
 [Route("api/sourcetexts")]
@@ -52,5 +53,4 @@ public class SourceTextsController : ControllerBase
     record NinjaQuote(string Quote);
 
 }
-
 
