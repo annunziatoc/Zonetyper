@@ -52,7 +52,7 @@ namespace ZonetyperApi.Migrations
                     b.ToTable("Keystrokes");
                 });
 
-            modelBuilder.Entity("ZonetyperApi.Models.TypingPrompt", b =>
+            modelBuilder.Entity("ZonetyperApi.Models.SourceText", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -60,14 +60,8 @@ namespace ZonetyperApi.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Category")
-                        .HasColumnType("text");
-
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
-
-                    b.Property<int>("DifficultyLevel")
-                        .HasColumnType("integer");
 
                     b.Property<string>("Text")
                         .IsRequired()
@@ -75,7 +69,7 @@ namespace ZonetyperApi.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("TypingPrompts");
+                    b.ToTable("SourceTexts");
                 });
 
             modelBuilder.Entity("ZonetyperApi.Models.TypingSession", b =>

@@ -14,14 +14,9 @@ const MainSurface = ({ surfaceRef }: { surfaceRef: React.RefObject<HTMLDivElemen
     const caretPos = useCaretPosition(caretRef, currIdx)
     useTypingSession();
 
-
-    //focus the screen to the surfaceRef -> div
-
     useEffect(() => {
         surfaceRef.current?.focus()
     }, [])
-
-
 
     return (
         <main className={styles.mainSurface}>

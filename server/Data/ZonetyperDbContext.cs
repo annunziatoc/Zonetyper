@@ -10,6 +10,6 @@ public class ZonetyperDbContext : DbContext
 
     public DbSet<TypingSession> TypingSessions { get; set; }
     public DbSet<Keystroke> Keystrokes { get; set; }
-    public DbSet<Passage> Passages { get; set; }
+    public DbSet<SourceText> SourceTexts { get; set; }
 
 }

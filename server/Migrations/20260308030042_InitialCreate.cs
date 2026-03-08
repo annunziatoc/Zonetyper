@@ -31,19 +31,17 @@ namespace ZonetyperApi.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "TypingPrompts",
+                name: "SourceTexts",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Text = table.Column<string>(type: "text", nullable: false),
-                    DifficultyLevel = table.Column<int>(type: "integer", nullable: false),
-                    Category = table.Column<string>(type: "text", nullable: true),
                     CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_TypingPrompts", x => x.Id);
+                    table.PrimaryKey("PK_SourceTexts", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -74,7 +72,7 @@ namespace ZonetyperApi.Migrations
                 name: "Keystrokes");
 
             migrationBuilder.DropTable(
-                name: "TypingPrompts");
+                name: "SourceTexts");
 
             migrationBuilder.DropTable(
                 name: "TypingSessions");

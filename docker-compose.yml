@@ -16,6 +16,7 @@ services:
     ports:
       - "5000:5000"
     environment:
+      - ApiNinja__Key=${API_NINJA_KEY}
       - ASPNETCORE_URLS=http://+:5000
       - ASPNETCORE_ENVIRONMENT=Development
       - ConnectionStrings__DefaultConnection=Host=postgres;Port=5432;Database=${POSTGRES_DB};Username=${POSTGRES_USER};Password=${POSTGRES_PASSWORD}
