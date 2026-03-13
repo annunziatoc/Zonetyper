@@ -7,7 +7,7 @@ const Footer = () => {
 
             <div className={styles.guide}>
                 <div className={styles.tab}>Tab</div>
-                <div>To Restart</div>
+                <div>For New Quote</div>
             </div>
             <div className={styles.guide}>
                 <div className={styles.click}>Click</div>
