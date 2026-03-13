@@ -2,7 +2,25 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    
+    position: relative;
+
+}
+
+.typingMaskWrapper {
+    position: relative;
+    width: 50rem;
+    height: 23rem;
+}
+
+.typingMaskOutline {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    stroke: var(--typing-mask-outline);
+    stroke-width: 0.4;
+    filter: blur(1px);
 }
 
 .typingMask {
@@ -16,12 +34,31 @@
 }
 
 
+.typingMask::after {
+    position: absolute;
+    inset: 87% 0 0 1%;
+    content: '';
+    border-radius: 10px;
+    background: repeating-linear-gradient(-45deg,
+            rgba(56, 56, 56, 0.26),
+            rgba(87, 87, 87, 0.417) 2px,
+            transparent 3px,
+            transparent 7px) left / 110px 30% no-repeat,
+        repeating-linear-gradient(45deg,
+            rgba(56, 56, 56, 0.26),
+            rgba(87, 87, 87, 0.417) 2px,
+            transparent 3px,
+            transparent 7px) right / 110px 30% no-repeat;
+}
+
+
 .typingMask::before {
     content: '';
     inset: 0;
     position: absolute;
-    background-image: url('../assets/texture_mask.svg');
-    opacity: 0.03;
+    background-image: url('../assets/texture_mask.png');
+    background-size: cover;
+    opacity: .1;
     pointer-events: none;
 }
 
@@ -32,20 +69,21 @@
     color: var(--typing-surface-text);
     font-family: var(--font-mono);
     font-size: 1.30rem;
+
 }
 
-.correct{
+.correct {
     color: var(--text-success);
 }
 
-.incorrect{
+.incorrect {
     background-color: var(--text-failure);
 }
 
-.caret{
-  position: fixed;  
-  background-color: var(--caret-background);
-  z-index: -1;
+.caret {
+    position: fixed;
+    background-color: var(--caret-background);
+    z-index: -1;
 }
 
 .surface:focus {

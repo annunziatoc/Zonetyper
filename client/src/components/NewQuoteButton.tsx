@@ -7,8 +7,8 @@ const NewQuoteButton = () => {
 
     const { setSourceText: setTypingText } = useTypingStore();
 
-    const handleClick = async () => {
-        const result = await getNewText()
+    const handleClick = () => {
+        const result = getNewText()
         setTypingText(result);
     }
 

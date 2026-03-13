@@ -22,8 +22,8 @@ export const useTypingSession = () => {
     //set source text
 
     useEffect(() => {
-        const init = async () => {
-            const newText = await getNewText();
+        const init = () => {
+            const newText = getNewText();
             setSourceText(newText)
         }
         init();

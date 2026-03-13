@@ -1,7 +1,9 @@
+using System.Diagnostics;
 using System.Text.Json;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Query.SqlExpressions;
+using Npgsql.Replication;
 
 [ApiController]
 [Route("api/sourcetexts")]
