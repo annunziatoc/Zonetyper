@@ -65,6 +65,7 @@ const MainSurface = ({ surfaceRef }: { surfaceRef: React.RefObject<HTMLDivElemen
                             // the crux of the typing validation
                             case charsArr[currIdx].char: {
                                 setCharsArr((prev) => prev.map((cs, i) => {
+                                    if(hasErrors) return i === currIdx ? { ...cs, status: false } : cs
                                     return i === currIdx ? { ...cs, status: true } : cs
                                 }))
                                 setCurrIdx((curr) => curr + 1)
