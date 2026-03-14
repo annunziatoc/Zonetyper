@@ -19,8 +19,14 @@
     height: 100%;
     pointer-events: none;
     stroke: var(--typing-mask-outline);
-    stroke-width: 0.4;
-    filter: blur(1px);
+    stroke-width: 2;
+    filter: drop-shadow(0 0 2px var(--typing-mask-outline));
+}
+
+.hasErrors {
+    stroke: var(--typing-mask-error);
+    stroke-width: 2.5;
+    filter: drop-shadow(0 0 2px rgba(244, 21, 21, 0.191));
 }
 
 .typingMask {
@@ -36,19 +42,19 @@
 
 .typingMask::after {
     position: absolute;
-    inset: 87% 0 0 1%;
+    inset: 87% 0 0 0.7%;
     content: '';
     border-radius: 10px;
     background: repeating-linear-gradient(-45deg,
             rgba(56, 56, 56, 0.26),
             rgba(87, 87, 87, 0.417) 2px,
             transparent 3px,
-            transparent 7px) left / 110px 30% no-repeat,
+            transparent 7px) left / 114px 30% no-repeat,
         repeating-linear-gradient(45deg,
             rgba(56, 56, 56, 0.26),
             rgba(87, 87, 87, 0.417) 2px,
             transparent 3px,
-            transparent 7px) right / 110px 30% no-repeat;
+            transparent 7px) right / 114px 30% no-repeat;
 }
 
 
@@ -89,4 +95,9 @@
 .surface:focus {
     outline: none;
     user-select: none;
+}
+
+.warning {
+    font-family: var(--font-mono);
+    color: var(--text-failure);
 }

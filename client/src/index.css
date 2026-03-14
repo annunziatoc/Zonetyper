@@ -41,7 +41,8 @@ body {
   --success: light-dark(#198754, #5FB3B4);
   --border: light-dark(#dee2e6, #6E6A86);
   --footer-guide: light-dark(#646262, #8d8d8e);
-  --typing-mask-outline: light-dark(#726fc5, #7875d2);
+  --typing-mask-outline: light-dark(#71708bc4, #71708bc4);
+  --typing-mask-error: light-dark(#f92e68ac, #f92e6872);
 
 
   --button-background: light-dark(var(--interactive), #0e56c3);
