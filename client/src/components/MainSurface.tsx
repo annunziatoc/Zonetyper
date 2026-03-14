@@ -38,10 +38,8 @@ const MainSurface = ({ surfaceRef }: { surfaceRef: React.RefObject<HTMLDivElemen
             <div className={styles.typingMaskWrapper}>
                 <div className={styles.typingMask}>
                     <div ref={surfaceRef} onKeyDown={async (ev) => {
-
+                        if(endTime) return
                         if (currIdx === 0 && startTime === 0) setStartTime(Date.now())
-
-                        // if(currIdx >= charsArr.length) return
 
                         switch (ev.key) {
                             //if chars match
