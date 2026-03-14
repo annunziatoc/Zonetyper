@@ -5,12 +5,16 @@ export const useCaretPosition = (caretRef: React.RefObject<HTMLSpanElement | nul
     const [caretPos, setCaretPos] = useState({ top: 0, left: 0, height: 0, width: 0 })
 
     useEffect(() => {
-        const rect = caretRef.current?.getBoundingClientRect()
-        if (!rect) return
-        setCaretPos({
-            top: rect.top, left: rect.left, height: rect.height,
-            width: Math.max(rect.width, 13)
-        })
+
+        const measure = () => {
+            const rect = caretRef.current?.getBoundingClientRect()
+            if (!rect) return
+            setCaretPos({
+                top: rect.top, left: rect.left, height: rect.height,
+                width: Math.max(rect.width, 13)
+            })
+        }
+        requestAnimationFrame(measure)
     }, [currIdx])
 
     useEffect(() => {

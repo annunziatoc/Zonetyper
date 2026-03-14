@@ -31,7 +31,7 @@ const Header = () => {
                         <span>Leaderboard</span>
                     </li>
                     <li>
-                        <span>Profile</span>
+                        <span>Login</span>
                     </li>
                     <li onClick={() => setTheme(t => t === 'light' ? 'dark' : 'light')}>
                         <span>Theme</span>
