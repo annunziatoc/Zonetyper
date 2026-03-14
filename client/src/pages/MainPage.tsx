@@ -3,7 +3,7 @@ import MainSurface from "../components/MainSurface";
 import styles from './MainPage.module.css'
 import Timer from '../components/Timer'
 import WPM from "../components/WPM";
-import NewQuoteButton from "../components/NewQuoteButton";
+// import NewQuoteButton from "../components/NewQuoteButton";
 import useTypingStore from "../store/useTypingStore";
 
 const MainPage = () => {
@@ -15,7 +15,7 @@ const MainPage = () => {
     return (
         <div className={styles.mainPage} onClick={() => surfaceRef.current?.focus()}>
             <div className={styles.typingSpeedWrapper}>
-                <NewQuoteButton />
+                {/* <NewQuoteButton /> */}
             </div>
             <div className={styles.typingSpeedWrapper}>
                 <Timer />
