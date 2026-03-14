@@ -8,13 +8,24 @@ import { useTypingSession } from "../hooks/useTypingSession";
 const MainSurface = ({ surfaceRef }: { surfaceRef: React.RefObject<HTMLDivElement | null> }) => {
 
     const { setSourceText, currIdx, setCurrIdx,
-        charsArr, setCharsArr, startTime, setStartTime } = useTypingStore();
+        charsArr, setCharsArr, startTime, setStartTime, endTime, setEndTime, setFinalWpm } = useTypingStore();
 
     const caretRef = useRef<HTMLSpanElement>(null);
     const caretPos = useCaretPosition(caretRef, currIdx)
     useTypingSession();
 
     const hasErrors = charsArr.some(cs => cs.status === false)
+
+    useEffect(() => {
+        if (charsArr.every(cs => cs.status === true) && charsArr.length > 0) {
+            const now = Date.now()
+            const nOfWords = charsArr.map(cs => cs.char).join('').split(' ').length
+            const elapsedMin = (now - startTime) / 60000
+            const wpm = startTime === 0 ? 0 : Math.floor(nOfWords / elapsedMin)
+            setFinalWpm(wpm)
+            setEndTime(now)
+        }
+    }, [charsArr])
 
     useEffect(() => {
         surfaceRef.current?.focus()
@@ -37,6 +48,7 @@ const MainSurface = ({ surfaceRef }: { surfaceRef: React.RefObject<HTMLDivElemen
                             case 'Backspace':
                                 {
                                     if (currIdx > 0) {
+                                        if (endTime) break
                                         setCharsArr((prev) => prev.map((cs, i) => {
                                             //if index match
                                             return i === currIdx - 1 ? { ...cs, status: null } : cs
@@ -56,16 +68,18 @@ const MainSurface = ({ surfaceRef }: { surfaceRef: React.RefObject<HTMLDivElemen
 
                             case 'Tab': {
                                 ev.preventDefault();
-                                const newText = await getNewText();
+                                const newText = getNewText();
                                 setSourceText(newText)
                                 setCurrIdx(() => 0)
+                                setEndTime(0)
+                                setStartTime(0)
                                 break;
                             }
 
                             // the crux of the typing validation
                             case charsArr[currIdx].char: {
                                 setCharsArr((prev) => prev.map((cs, i) => {
-                                    if(hasErrors) return i === currIdx ? { ...cs, status: false } : cs
+                                    if (hasErrors) return i === currIdx ? { ...cs, status: false } : cs
                                     return i === currIdx ? { ...cs, status: true } : cs
                                 }))
                                 setCurrIdx((curr) => curr + 1)
