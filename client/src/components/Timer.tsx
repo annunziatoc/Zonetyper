@@ -10,7 +10,10 @@ const Timer = () => {
     const MAX_SECONDS = 600
 
     useEffect(() => {
-        if (!startTime) return
+        if (!startTime) {
+            setElapsed(0)
+            return
+        }
 
         const interval = setInterval(() => {
             const now = Date.now()
