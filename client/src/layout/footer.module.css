@@ -26,7 +26,6 @@
     background-color: var(--typing-surface);
     border-radius: 4px 8px 4px 8px;
     box-shadow: 2px 2px 1px 0px light-dark(rgba(95, 95, 95, 0.537), rgba(130, 130, 130, 0.209));
-
 }
 
 .click {

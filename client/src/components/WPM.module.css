@@ -5,6 +5,7 @@
     height: 2rem;
     width: auto;
     font-family: var(--font-nav-items);
-    font-weight: 500;
+    font-weight: 700;
+    font-size: x-large;
     color: var(--timer-text);
 }

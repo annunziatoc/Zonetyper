@@ -2,7 +2,7 @@ import { useRef } from "react";
 import MainSurface from "../components/MainSurface";
 import styles from './MainPage.module.css'
 import Timer from '../components/Timer'
-import WPM from "../components/WPM";
+// import WPM from "../components/WPM";
 import NewQuoteButton from "../components/NewQuoteButton";
 
 const MainPage = () => {
@@ -18,7 +18,7 @@ const MainPage = () => {
             </div>
             <div className={styles.typingSpeedWrapper}>
                 <Timer />
-                <WPM />
+                {/* <WPM /> */}
             </div>
             <MainSurface surfaceRef={surfaceRef} />
         </div>
