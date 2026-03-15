@@ -28,7 +28,7 @@ const Header = () => {
                         <span>Race</span>
                     </li>
                     <li>
-                        <span>Leaderboard</span>
+                        <span>Stats</span>
                     </li>
                     <li>
                         <span>Login</span>

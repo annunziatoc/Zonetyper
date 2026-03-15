@@ -8,25 +8,35 @@ import { useTypingSession } from "../hooks/useTypingSession";
 const MainSurface = ({ surfaceRef }: { surfaceRef: React.RefObject<HTMLDivElement | null> }) => {
 
     const { setSourceText, currIdx, setCurrIdx,
-        charsArr, setCharsArr, startTime, setStartTime, endTime, setEndTime, setFinalWpm } = useTypingStore();
+        charsArr, setCharsArr, startTime, setStartTime,
+        endTime, setEndTime, setFinalWpm } = useTypingStore();
 
     const caretRef = useRef<HTMLSpanElement>(null);
+    //pointer to hand off the current DOM node for position motion calc
     const caretPos = useCaretPosition(caretRef, currIdx)
     useTypingSession();
 
+    //any incorrect keypress in the charsArr?
     const hasErrors = charsArr.some(cs => cs.status === false)
 
+    //need to run the calc 
     useEffect(() => {
         if (charsArr.every(cs => cs.status === true) && charsArr.length > 0) {
             const now = Date.now()
+            //get all chars and create an arr like ['c','h','a','r','s',' ',]
+            //join into a string like so ['chars ']
+            //split to get word chunks ['chars', '']
             const nOfWords = charsArr.map(cs => cs.char).join('').split(' ').length
+            //ms to s to min 
             const elapsedMin = (now - startTime) / 60000
             const wpm = startTime === 0 ? 0 : Math.floor(nOfWords / elapsedMin)
             setFinalWpm(wpm)
             setEndTime(now)
         }
+         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [charsArr])
 
+    //get focus on the outer surface ref props so we can click anywhere
     useEffect(() => {
         surfaceRef.current?.focus()
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -34,7 +44,6 @@ const MainSurface = ({ surfaceRef }: { surfaceRef: React.RefObject<HTMLDivElemen
 
     return (
         <main className={styles.mainSurface}>
-
             <div className={styles.typingMaskWrapper}>
                 <div className={styles.typingMask}>
                     <div ref={surfaceRef} onKeyDown={async (ev) => {
@@ -66,7 +75,7 @@ const MainSurface = ({ surfaceRef }: { surfaceRef: React.RefObject<HTMLDivElemen
                                 break;
                             }
 
-                            // the crux of the typing validation
+                            // typing validation only true of no errors
                             case charsArr[currIdx].char: {
                                 setCharsArr((prev) => prev.map((cs, i) => {
                                     if (hasErrors) return i === currIdx ? { ...cs, status: false } : cs
@@ -77,7 +86,7 @@ const MainSurface = ({ surfaceRef }: { surfaceRef: React.RefObject<HTMLDivElemen
                             }
 
                             // only process single char keyboard commands
-                            // ignore enter, tab , space etc..
+                            // ignore string cmds like 'enter', 'tab' , 'space' etc..
                             default: {
                                 if (ev.key.length !== 1) break
                                 setCharsArr((prev) => prev.map((cs, i) => {
@@ -91,6 +100,9 @@ const MainSurface = ({ surfaceRef }: { surfaceRef: React.RefObject<HTMLDivElemen
                         className={styles.surface}
                         tabIndex={0}>
                         {charsArr.map((cs, i) => (
+                            //span is the caret
+                            //status is used for highlighting 
+                            //caret ref attaches to DOM node of current char
                             <span key={cs.id} className={cs.status === true ?
                                 styles.correct : cs.status === false ? styles.incorrect : ''}
                                 ref={i === currIdx ? caretRef : null}>{cs.char}</span>
