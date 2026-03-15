@@ -62,7 +62,7 @@
     content: '';
     inset: 0;
     position: absolute;
-    background-image: url('/assets/texture_mask.png');
+    background-image: url('/assets/texture_mask.webp');
     background-size: cover;
     opacity: .1;
     pointer-events: none;
