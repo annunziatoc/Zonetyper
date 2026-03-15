@@ -33,7 +33,7 @@ const MainSurface = ({ surfaceRef }: { surfaceRef: React.RefObject<HTMLDivElemen
             setFinalWpm(wpm)
             setEndTime(now)
         }
-         // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [charsArr])
 
     //get focus on the outer surface ref props so we can click anywhere
@@ -51,22 +51,24 @@ const MainSurface = ({ surfaceRef }: { surfaceRef: React.RefObject<HTMLDivElemen
                         if (currIdx === 0 && startTime === 0) setStartTime(Date.now())
 
                         switch (ev.key) {
-                            //if chars match
                             case 'Backspace':
                                 {
+                                    //if we can backspace at all
                                     if (currIdx > 0) {
+                                        // disable backspace if at end
                                         if (endTime) return
                                         setCharsArr((prev) => prev.map((cs, i) => {
-                                            //if index match
+                                            //if index match we undo the state
                                             return i === currIdx - 1 ? { ...cs, status: null } : cs
                                         }))
-
+                                        //go back by index tracking
                                         setCurrIdx((curr) => curr - 1)
                                     }
                                     break;
                                 }
                             case 'Tab': {
                                 ev.preventDefault();
+                                //reset all state
                                 const newText = getNewText();
                                 setSourceText(newText)
                                 setCurrIdx(() => 0)
@@ -75,12 +77,17 @@ const MainSurface = ({ surfaceRef }: { surfaceRef: React.RefObject<HTMLDivElemen
                                 break;
                             }
 
-                            // typing validation only true of no errors
+                            //runtime value 
+                            //ev.key is what user pressed
+                            //charsArr[currIdx].char is what user suppoed to press
                             case charsArr[currIdx].char: {
                                 setCharsArr((prev) => prev.map((cs, i) => {
+                                    // typing validation only true for no errors
                                     if (hasErrors) return i === currIdx ? { ...cs, status: false } : cs
+                                    //correct char typed
                                     return i === currIdx ? { ...cs, status: true } : cs
                                 }))
+                                //next index regardless
                                 setCurrIdx((curr) => curr + 1)
                                 break;
                             }
@@ -107,7 +114,7 @@ const MainSurface = ({ surfaceRef }: { surfaceRef: React.RefObject<HTMLDivElemen
                                 styles.correct : cs.status === false ? styles.incorrect : ''}
                                 ref={i === currIdx ? caretRef : null}>{cs.char}</span>
                         ))}
-                        <motion.div
+                        <motion.div //caret animation
                             style={{ position: 'fixed' }}
                             className={styles.caret}
                             animate={{
