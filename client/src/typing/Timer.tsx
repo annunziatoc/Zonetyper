@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import styles from './Timer.module.css'
-import useTypingStore from "../store/useTypingStore";
+import useTypingStore from "../typing/useTypingStore";
 
 const Timer = () => {
 

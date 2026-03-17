@@ -1,10 +1,9 @@
 import quoteList from '../../static/quotes.json'
 
-export const getNewText = (): string => {
+export const getNewText = () => {
 
     const randomIndex = Math.floor(Math.random() * quoteList.length)
-    return quoteList[randomIndex].text
-
+    return quoteList[randomIndex]
 }
 
 

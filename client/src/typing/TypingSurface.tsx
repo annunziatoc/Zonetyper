@@ -1,15 +1,16 @@
 import { useRef, useEffect } from "react";
-import styles from './MainSurface.module.css'
+import styles from '../typing/TypingSurface.module.css'
 import { motion } from "framer-motion"
-import useTypingStore from "../store/useTypingStore";
-import { getNewText } from "../services/typingApi";
-import { useCaretPosition } from "../hooks/useCaretPosition";
-import { useTypingSession } from "../hooks/useTypingSession";
+import useTypingStore from "./useTypingStore";
+import { getNewText } from "./typingApi";
+import { useCaretPosition } from "./useCaretPosition";
+import { useTypingSession } from "./useTypingSession";
 const MainSurface = ({ surfaceRef }: { surfaceRef: React.RefObject<HTMLDivElement | null> }) => {
 
     const { setSourceText, currIdx, setCurrIdx,
         charsArr, setCharsArr, startTime, setStartTime,
-        endTime, setEndTime, setFinalWpm } = useTypingStore();
+        endTime, setEndTime, setFinalWpm,
+      setSourceTextId, setErrorCount, resetErrorCount} = useTypingStore();
 
     const caretRef = useRef<HTMLSpanElement>(null);
     //pointer to hand off the current DOM node for position motion calc
@@ -70,10 +71,12 @@ const MainSurface = ({ surfaceRef }: { surfaceRef: React.RefObject<HTMLDivElemen
                                 ev.preventDefault();
                                 //reset all state
                                 const newText = getNewText();
-                                setSourceText(newText)
+                                setSourceText(newText.text)
+                                setSourceTextId(newText.id)
                                 setCurrIdx(() => 0)
                                 setEndTime(0)
                                 setStartTime(0)
+                                resetErrorCount()
                                 break;
                             }
 
@@ -99,6 +102,7 @@ const MainSurface = ({ surfaceRef }: { surfaceRef: React.RefObject<HTMLDivElemen
                                 setCharsArr((prev) => prev.map((cs, i) => {
                                     return i === currIdx ? { ...cs, status: false } : cs
                                 }))
+                                setErrorCount()
                                 setCurrIdx((curr) => curr + 1)
                                 break;
                             }

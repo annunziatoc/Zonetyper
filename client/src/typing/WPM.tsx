@@ -1,5 +1,5 @@
-import styles from './WPM.module.css'
-import useTypingStore from "../store/useTypingStore";
+import styles from '../typing/WPM.module.css'
+import useTypingStore from "./useTypingStore";
 
 const WPM = () => {
 
