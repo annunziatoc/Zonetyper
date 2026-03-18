@@ -25,18 +25,7 @@ var app = builder.Build();
 app.UseCors();
 app.UseAuthorization();
 app.MapControllers();
-
 app.MapGet("/", () => "Zonetyper API is running!");
-
-app.MapPost("/api/sourceText", async (SourceText sourceText, ZonetyperDbContext db) =>
-{
-    sourceText.CreatedAt = DateTime.UtcNow;
-    db.SourceTexts.Add(sourceText);
-    await db.SaveChangesAsync();
-    return Results.Created($"/api/sourceText/{sourceText.Id}", sourceText);
-});
-
-
 app.Run();
 
 
