@@ -1,33 +1,31 @@
 import { useEffect, useState } from "react"
 
-export const useCaretPosition = (caretRef: React.RefObject<HTMLSpanElement | null>, currIdx: number) => {
+export const useCaretPosition = (
+    caretRef: React.RefObject<HTMLSpanElement | null>,
+    currIdx: number,
+    charsLen: number,
+    containerRef: React.RefObject<HTMLDivElement | null>) => {
 
     const [caretPos, setCaretPos] = useState({ top: 0, left: 0, height: 0, width: 0 })
 
-    useEffect(() => {
+    const measure = () => {
+        const containerRect = containerRef.current?.getBoundingClientRect()
+        const caretRect = caretRef.current?.getBoundingClientRect()
+        if (!containerRect || !caretRect) return
+        setCaretPos({
+            top: caretRect.top - containerRect.top,
+            left: caretRect.left - containerRect.left,
+            height: caretRect.height,
+            width: Math.max(caretRect.width, 13)
+        })
+    }
 
-        const measure = () => {
-            const rect = caretRef.current?.getBoundingClientRect()
-            if (!rect) return
-            setCaretPos({
-                top: rect.top, left: rect.left, height: rect.height,
-                width: Math.max(rect.width, 13)
-            })
-        }
-        requestAnimationFrame(measure)
-    }, [currIdx])
-
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    useEffect(() => { measure() }, [currIdx, charsLen])
     useEffect(() => {
-        const handleResize = () => {
-            const rect = caretRef.current?.getBoundingClientRect()
-            if (!rect) return
-            setCaretPos({
-                top: rect.top, left: rect.left, height: rect.height,
-                width: Math.max(rect.width, 13)
-            })
-        }
-        window.addEventListener('resize', handleResize)
-        return () => window.removeEventListener('resize', handleResize)
+        window.addEventListener('resize', measure)
+        return () => window.removeEventListener('resize', measure)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return caretPos;

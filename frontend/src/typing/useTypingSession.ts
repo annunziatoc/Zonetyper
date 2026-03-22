@@ -1,26 +1,12 @@
 import { useEffect } from "react"
 import { getNewText } from "./typingApi"
 import useTypingStore from "./useTypingStore";
-import { submitSession } from "./typingSessionService"
 
 
 
 export const useTypingSession = () => {
 
-    const { sourceText, setCharsArr, setCurrIdx, setSourceText,
-        endTime, startTime, finalWpm, sourceTextId, setSourceTextId, errorCount } = useTypingStore();
-
-    useEffect(() => {
-        submitSession({
-            sourceTextId: sourceTextId,
-            wpm: finalWpm,
-            accuracy: ((sourceText.length - errorCount) / sourceText.length) * 100,
-            duration: endTime - startTime,
-            errorCount: errorCount,
-        })
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+    const { sourceText, setCharsArr, setCurrIdx, setSourceText, setSourceTextId} = useTypingStore();
 
     //populate the charsArr
 
@@ -42,10 +28,8 @@ export const useTypingSession = () => {
             setSourceTextId(newText.id)
         }
         init();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [setSourceText])
-
-
 }
 
 

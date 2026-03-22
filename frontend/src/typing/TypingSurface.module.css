@@ -3,7 +3,6 @@
     justify-content: center;
     align-items: center;
     position: relative;
-
 }
 
 .typingMaskWrapper {
@@ -87,7 +86,7 @@
 }
 
 .caret {
-    position: fixed;
+    position: absolute;
     background-color: var(--caret-background);
     z-index: -1;
 }

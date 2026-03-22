@@ -5,16 +5,20 @@ import useTypingStore from "./useTypingStore";
 import { getNewText } from "./typingApi";
 import { useCaretPosition } from "./useCaretPosition";
 import { useTypingSession } from "./useTypingSession";
+import { submitSession } from "./typingSessionService"
 const MainSurface = ({ surfaceRef }: { surfaceRef: React.RefObject<HTMLDivElement | null> }) => {
 
     const { setSourceText, currIdx, setCurrIdx,
         charsArr, setCharsArr, startTime, setStartTime,
-        endTime, setEndTime, setFinalWpm,
-      setSourceTextId, setErrorCount, resetErrorCount} = useTypingStore();
+        endTime, setEndTime, setFinalWpm, sourceTextId,
+        sourceText, errorCount, setSourceTextId,
+        setErrorCount, resetErrorCount } = useTypingStore();
 
     const caretRef = useRef<HTMLSpanElement>(null);
+    const containerRef = useRef<HTMLDivElement>(null);
+
     //pointer to hand off the current DOM node for position motion calc
-    const caretPos = useCaretPosition(caretRef, currIdx)
+    const caretPos = useCaretPosition(caretRef, currIdx, charsArr.length, containerRef)
     useTypingSession();
 
     //any incorrect keypress in the charsArr?
@@ -31,11 +35,30 @@ const MainSurface = ({ surfaceRef }: { surfaceRef: React.RefObject<HTMLDivElemen
             //ms to s to min 
             const elapsedMin = (now - startTime) / 60000
             const wpm = startTime === 0 ? 0 : Math.floor(nOfWords / elapsedMin)
-            setFinalWpm(wpm)
+
+            //if session not started or startTime === 0
+            if (startTime === 0 || wpm === 0) return;
             setEndTime(now)
+            setFinalWpm(wpm)
+            console.log({
+                sourceTextId,
+                wpm,
+                accuracy: ((charsArr.length - errorCount) / charsArr.length) * 100,
+                duration: Math.floor((now - startTime) / 1000),
+                errorCount,
+            })
+
+            submitSession({
+                sourceTextId: sourceTextId,
+                wpm: wpm,
+                accuracy: ((sourceText.length - errorCount) / sourceText.length) * 100,
+                duration: now - startTime,
+                errorCount: errorCount,
+            }).catch(err => console.error(" submitSession failed", err));
+
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [charsArr])
+    }, [charsArr, startTime])
 
     //get focus on the outer surface ref props so we can click anywhere
     useEffect(() => {
@@ -46,10 +69,10 @@ const MainSurface = ({ surfaceRef }: { surfaceRef: React.RefObject<HTMLDivElemen
     return (
         <main className={styles.mainSurface}>
             <div className={styles.typingMaskWrapper}>
-                <div className={styles.typingMask}>
+                <div ref={containerRef} className={styles.typingMask}>
                     <div ref={surfaceRef} onKeyDown={async (ev) => {
-
                         if (currIdx === 0 && startTime === 0) setStartTime(Date.now())
+                        if (currIdx > charsArr.length && charsArr[currIdx].char !== 'Backspace') return
 
                         switch (ev.key) {
                             case 'Backspace':
@@ -98,6 +121,8 @@ const MainSurface = ({ surfaceRef }: { surfaceRef: React.RefObject<HTMLDivElemen
                             // only process single char keyboard commands
                             // ignore string cmds like 'enter', 'tab' , 'space' etc..
                             default: {
+                                //don't allow out of bounds
+                                if (currIdx >= charsArr.length) return;
                                 if (ev.key.length !== 1) break
                                 setCharsArr((prev) => prev.map((cs, i) => {
                                     return i === currIdx ? { ...cs, status: false } : cs
@@ -116,16 +141,18 @@ const MainSurface = ({ surfaceRef }: { surfaceRef: React.RefObject<HTMLDivElemen
                             //caret ref attaches to DOM node of current char
                             <span key={cs.id} className={cs.status === true ?
                                 styles.correct : cs.status === false ? styles.incorrect : ''}
+                                //if current index is this span attach the ref else null
                                 ref={i === currIdx ? caretRef : null}>{cs.char}</span>
                         ))}
-                        <motion.div //caret animation
-                            style={{ position: 'fixed' }}
-                            className={styles.caret}
-                            animate={{
-                                top: caretPos.top, left: caretPos.left,
-                                height: caretPos.height, width: caretPos.width
-                            }}
-                            transition={{ duration: 0.04, ease: 'easeOut' }} />
+                        {caretPos.height > 0 && (
+                            <motion.div //caret animation
+                                className={styles.caret}
+                                animate={{
+                                    top: caretPos.top, left: caretPos.left,
+                                    height: caretPos.height, width: caretPos.width
+                                }}
+                                transition={{ duration: 0.04, ease: 'easeOut' }} />
+                        )}
                     </div>
                 </div>
                 {hasErrors && <div className={styles.warning}>Backspace Your Mistakes To Continue.</div>}

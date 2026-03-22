@@ -9,6 +9,9 @@ export default defineConfig({
         open: false,
         watch: {
             usePolling: true,
+        },
+        proxy: {
+            '/api': 'http://backend:5000'
         }
     },
     esbuild: {

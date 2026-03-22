@@ -5,7 +5,6 @@ using ZonetyperApi.Models;
 [Route("api/sessions")]
 public class TypingSessionController(ZonetyperDbContext db) : ControllerBase
 {
-
     [HttpPost]
     public async Task<IActionResult> Submit(CreateTypingSessionDto dto)
     {
