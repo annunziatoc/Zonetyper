@@ -16,7 +16,7 @@ export const useCaretPosition = (
             top: caretRect.top - containerRect.top,
             left: caretRect.left - containerRect.left,
             height: caretRect.height,
-            width: Math.max(caretRect.width, 13)
+            width: caretRect.width > 10 ? caretRect.width : 13
         })
     }
 
