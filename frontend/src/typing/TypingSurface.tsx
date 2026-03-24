@@ -71,8 +71,11 @@ const MainSurface = ({ surfaceRef }: { surfaceRef: React.RefObject<HTMLDivElemen
             <div className={styles.typingMaskWrapper}>
                 <div ref={containerRef} className={styles.typingMask}>
                     <div ref={surfaceRef} onKeyDown={async (ev) => {
+                        //at start set the start time
                         if (currIdx === 0 && startTime === 0) setStartTime(Date.now())
-                        if (currIdx > charsArr.length && charsArr[currIdx].char !== 'Backspace') return
+                        //tab only if out of bounds 
+                        //last valid index is charsArr.length - 1
+                        if(currIdx >= charsArr.length && ev.key !== 'Tab')return
 
                         switch (ev.key) {
                             case 'Backspace':
