@@ -3,5 +3,6 @@
     double Wpm,
     double Accuracy,
     int Duration,
-    int ErrorCount
+    int ErrorCount,
+    string SourceText
 );
