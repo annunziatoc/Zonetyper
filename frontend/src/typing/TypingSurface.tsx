@@ -1,11 +1,11 @@
 import { useRef, useEffect } from "react";
-import styles from '../typing/TypingSurface.module.css'
+import styles from './TypingSurface.module.css'
 import { motion } from "framer-motion"
-import useTypingStore from "./useTypingStore";
-import { getNewText } from "./typingApi";
-import { useCaretPosition } from "./useCaretPosition";
-import { useTypingSession } from "./useTypingSession";
-import { submitSession } from "./typingSessionService"
+import useTypingStore from "./hooks/useTypingStore";
+import { getNewText } from "./services/typingApi";
+import { useCaretPosition } from "./hooks/useCaretPosition";
+import { useTypingSession } from "./hooks/useTypingSession";
+import { submitSession } from "./services/typingSessionService"
 const MainSurface = ({ surfaceRef }: { surfaceRef: React.RefObject<HTMLDivElement | null> }) => {
 
     const { setSourceText, currIdx, setCurrIdx,
@@ -24,9 +24,10 @@ const MainSurface = ({ surfaceRef }: { surfaceRef: React.RefObject<HTMLDivElemen
     //any incorrect keypress in the charsArr?
     const hasErrors = charsArr.some(cs => cs.status === false)
 
-    //need to run the calc 
     useEffect(() => {
+        //if all true then we are done also .every returns true on empty arr
         if (charsArr.every(cs => cs.status === true) && charsArr.length > 0) {
+            //for final time
             const now = Date.now()
             //get all chars and create an arr like ['c','h','a','r','s',' ',]
             //join into a string like so ['chars ']
@@ -38,22 +39,25 @@ const MainSurface = ({ surfaceRef }: { surfaceRef: React.RefObject<HTMLDivElemen
 
             //if session not started or startTime === 0
             if (startTime === 0 || wpm === 0) return;
+            setSourceText(sourceText)
             setEndTime(now)
             setFinalWpm(wpm)
             console.log({
                 sourceTextId,
                 wpm,
-                accuracy: ((charsArr.length - errorCount) / charsArr.length) * 100,
+                accuracy: Math.round(((charsArr.length - errorCount) / charsArr.length) * 100),
                 duration: Math.floor((now - startTime) / 1000),
                 errorCount,
+                sourceText
             })
 
             submitSession({
                 sourceTextId: sourceTextId,
                 wpm: wpm,
-                accuracy: ((sourceText.length - errorCount) / sourceText.length) * 100,
-                duration: now - startTime,
+                accuracy: Math.round(((sourceText.length - errorCount) / sourceText.length) * 100),
+                duration: Math.floor((now - startTime) /1000),
                 errorCount: errorCount,
+                sourceText: sourceText,
             }).catch(err => console.error(" submitSession failed", err));
 
         }

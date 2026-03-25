@@ -1,4 +1,4 @@
-import quoteList from '../../static/quotes.json'
+import quoteList from '../../../static/quotes.json'
 
 export const getNewText = () => {
 

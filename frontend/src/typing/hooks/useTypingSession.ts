@@ -1,6 +1,6 @@
 import { useEffect } from "react"
-import { getNewText } from "./typingApi"
-import useTypingStore from "./useTypingStore";
+import { getNewText } from "../services/typingApi"
+import useTypingStore from "../hooks/useTypingStore";
 
 
 

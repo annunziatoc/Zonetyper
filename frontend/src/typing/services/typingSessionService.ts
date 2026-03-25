@@ -5,6 +5,7 @@ export type CreateTypingSessionDto = {
     accuracy: number;
     duration: number;
     errorCount: number;
+    sourceText: string;
 }
 
 export async function submitSession(dto: CreateTypingSessionDto) {

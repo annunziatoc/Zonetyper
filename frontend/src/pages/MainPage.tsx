@@ -1,9 +1,9 @@
 import { useRef } from "react";
 import TypingSurface from "../typing/TypingSurface";
 import styles from './MainPage.module.css'
-import Timer from '../typing/Timer'
-import WPM from "../typing/WPM";
-import useTypingStore from "../typing/useTypingStore";
+import Timer from '../typing/components/Timer'
+import WPM from "../typing/components/WPM";
+import useTypingStore from "../typing/hooks/useTypingStore";
 
 const MainPage = () => {
 
