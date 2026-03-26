@@ -99,4 +99,5 @@
 .warning {
     font-family: var(--font-mono);
     color: var(--text-failure);
+    padding-top: 2px;
 }

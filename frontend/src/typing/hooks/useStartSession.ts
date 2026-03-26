@@ -1,10 +1,10 @@
 import { useEffect } from "react"
 import { getNewText } from "../services/typingApi"
-import useTypingStore from "../hooks/useTypingStore";
+import useTypingStore from "./useTypingStore";
 
 
 
-export const useTypingSession = () => {
+export const useStartSession = () => {
 
     const { sourceText, setCharsArr, setCurrIdx, setSourceText, setSourceTextId } = useTypingStore();
 
@@ -21,7 +21,7 @@ export const useTypingSession = () => {
     useEffect(() => {
 
         const words = sourceText.split(' ')
-        const numChars = words.slice(0, Math.min(110, words.length)).join(' ').length
+        const numChars = words.slice(0, Math.min(105, words.length)).join(' ').length
         setCharsArr(() => sourceText.split('').slice(0, numChars).map((char) => ({
             char,
             status: null,
