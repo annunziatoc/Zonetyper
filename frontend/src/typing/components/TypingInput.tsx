@@ -53,7 +53,7 @@ const TypingInput = ({ surfaceRef, children }: {
 
                 //runtime value 
                 //ev.key is what user pressed
-                //charsArr[currIdx].char is what user suppoed to press
+                //charsArr[currIdx].char is what user supposed to press
                 case charsArr[currIdx].char: {
                     setCharsArr((prev) => prev.map((cs, i) => {
                         // typing validation only true for no errors

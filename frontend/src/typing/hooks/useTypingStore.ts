@@ -17,6 +17,8 @@ interface TypingState {
     startTime: number;
     endTime: number;
     finalWpm: number;
+    finalAcc: number;
+    finalDur: number;
     errorCount: number;
     setSourceText: (text: string) => void;
     setSourceTextId: (id: number) => void;
@@ -25,6 +27,8 @@ interface TypingState {
     setStartTime: (time: number) => void;
     setEndTime: (time: number) => void;
     setFinalWpm: (wpm: number) => void;
+    setFinalAcc: (acc: number) => void;
+    setFinalDur: (dur: number) => void;
     setErrorCount: () => void;
     resetErrorCount: () => void;
 }
@@ -38,6 +42,8 @@ const useTypingStore = create<TypingState>((set) => ({
     startTime: 0,
     endTime: 0,
     finalWpm: 0,
+    finalAcc: 0,
+    finalDur: 0,
     errorCount: 0,
     setSourceText: ((text: string) => set({ sourceText: text })),
     setSourceTextId: ((id: number) => set({ sourceTextId: id })),
@@ -46,6 +52,8 @@ const useTypingStore = create<TypingState>((set) => ({
     setStartTime: (time) => set({startTime: time}),
     setEndTime: (time) => set({ endTime: time }),
     setFinalWpm: (wpm) => set({finalWpm: wpm}),
+    setFinalAcc: (acc) => set({finalAcc: acc}),
+    setFinalDur: (dur) => set({finalDur: dur}),
     setErrorCount: () => set((state) => ({ errorCount: state.errorCount + 1 })),
     resetErrorCount: () =>  set({errorCount: 0}),
 }))

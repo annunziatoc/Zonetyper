@@ -1,0 +1,34 @@
+.container {
+    display: flex;
+    height: 100%;
+}
+
+
+.card {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 1rem;
+}
+
+.heading {
+    width: 100%;
+    text-align: center;
+    font-size: 2rem;
+    margin-top: -1rem;
+}
+
+
+.statsGrid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    font-size: 1.50rem;
+    padding-top: 2rem;
+}
+
+.nextSession {
+    text-align: center;
+    font-size: 1.25rem;
+    padding-top: 4rem;
+}

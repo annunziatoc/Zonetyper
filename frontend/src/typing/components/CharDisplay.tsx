@@ -8,7 +8,6 @@ import styles from '../TypingSurface.module.css'
 const CharDisplay = ({containerRef}: {containerRef: React.RefObject<HTMLDivElement | null>}) => {
 
     const caretRef = useRef<HTMLSpanElement>(null);
-   
     const { charsArr, currIdx } = useTypingStore();
     const caretPos = useCaretPosition(caretRef, currIdx, charsArr.length, containerRef)
 
@@ -17,11 +16,9 @@ const CharDisplay = ({containerRef}: {containerRef: React.RefObject<HTMLDivEleme
             {
                 charsArr.map((cs, i) => (
                     //span is the caret
-                    //status is used for highlighting 
-                    //caret ref attaches to DOM node of current char
                     <span key={cs.id} className={cs.status === true ?
                         styles.correct : cs.status === false ? styles.incorrect : ''}
-                        //if current index is this span attach the ref else null
+                        //if current index is this span attach the ref
                         ref={i === currIdx ? caretRef : null}>{cs.char}</span>
                 ))
             }

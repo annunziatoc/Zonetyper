@@ -20,7 +20,7 @@ const MainPage = () => {
             </div>
             <div className={styles.typingSpeedWrapper}>
                 <Timer />
-                {endTime > 0 && <WPM />}
+                {/* {endTime > 0 && <WPM />} */}
             </div>
             <TypingSurface surfaceRef={surfaceRef} />
         </div>

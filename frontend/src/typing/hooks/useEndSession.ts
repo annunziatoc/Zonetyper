@@ -5,8 +5,8 @@ import { submitSession } from "../services/typingSessionService"
 const useEndCompletion = () => {
 
     const { charsArr, startTime, sourceText, sourceTextId, errorCount,
-        setEndTime, setFinalWpm } = useTypingStore()
-    
+        setEndTime, setFinalWpm, setFinalAcc, setFinalDur } = useTypingStore()
+
     useEffect(() => {
         //if all true then we are done also .every returns true on empty arr
         if (charsArr.every(cs => cs.status === true) && charsArr.length > 0) {
@@ -19,20 +19,23 @@ const useEndCompletion = () => {
             //ms to s to min 
             const elapsedMin = (now - startTime) / 60000
             const wpm = startTime === 0 ? 0 : Math.floor(nOfWords / elapsedMin)
+            const acc = Math.round(((charsArr.length - errorCount) / charsArr.length) * 100)
+            const dur = Math.floor((now - startTime) / 1000)
 
             //if session not started or startTime === 0
             if (startTime === 0 || wpm === 0) return;
             setEndTime(now)
             setFinalWpm(wpm)
+            setFinalAcc(acc)
+            setFinalDur(dur)
             submitSession({
                 sourceTextId: sourceTextId,
                 wpm: wpm,
-                accuracy: Math.round(((charsArr.length - errorCount) / charsArr.length) * 100),
-                duration: Math.floor((now - startTime) / 1000),
+                accuracy: acc,
+                duration: dur,
                 errorCount: errorCount,
                 sourceText: sourceText,
             }).catch(err => console.error(" submitSession failed", err));
-
         }
     }, [charsArr, startTime])
 }
