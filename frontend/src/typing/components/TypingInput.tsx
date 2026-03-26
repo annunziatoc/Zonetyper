@@ -2,7 +2,7 @@ import useTypingStore from "../hooks/useTypingStore";
 import { getNewText } from "../services/typingApi";
 import styles from '../TypingSurface.module.css'
 
-const Keydown = ({ surfaceRef, children }: {
+const TypingInput = ({ surfaceRef, children }: {
     surfaceRef: React.RefObject<HTMLDivElement | null>,
     children: React.ReactNode
 }) => {
@@ -91,4 +91,4 @@ const Keydown = ({ surfaceRef, children }: {
 
 
 
-export default Keydown
+export default TypingInput
