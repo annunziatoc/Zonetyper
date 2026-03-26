@@ -13,7 +13,6 @@ export const useStartSession = () => {
         const newText = getNewText();
         setSourceText(newText.text)
         setSourceTextId(newText.id)
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     //populate the charsArr
@@ -28,7 +27,6 @@ export const useStartSession = () => {
             id: crypto.randomUUID()
         })))
         setCurrIdx(() => 0)
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [sourceText])
 
 }

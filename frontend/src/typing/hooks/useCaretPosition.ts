@@ -20,12 +20,10 @@ export const useCaretPosition = (
         })
     }
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     useEffect(() => { measure() }, [currIdx, charsLen])
     useEffect(() => {
         window.addEventListener('resize', measure)
         return () => window.removeEventListener('resize', measure)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return caretPos;

@@ -34,7 +34,6 @@ const useEndCompletion = () => {
             }).catch(err => console.error(" submitSession failed", err));
 
         }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [charsArr, startTime])
 }
 

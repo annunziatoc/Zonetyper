@@ -13,7 +13,6 @@ const MainSurface = ({ surfaceRef }: { surfaceRef: React.RefObject<HTMLDivElemen
     useEndSession();
     useEffect(() => {
         surfaceRef.current?.focus()
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return (
