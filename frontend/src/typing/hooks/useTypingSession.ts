@@ -6,30 +6,34 @@ import useTypingStore from "../hooks/useTypingStore";
 
 export const useTypingSession = () => {
 
-    const { sourceText, setCharsArr, setCurrIdx, setSourceText, setSourceTextId} = useTypingStore();
+    const { sourceText, setCharsArr, setCurrIdx, setSourceText, setSourceTextId } = useTypingStore();
+
+    //initialize source text
+    useEffect(() => {
+        const newText = getNewText();
+        setSourceText(newText.text)
+        setSourceTextId(newText.id)
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
     //populate the charsArr
-
+    //slice up until a certain number of words
     useEffect(() => {
-        setCharsArr(() => sourceText.split('').map((char) => ({
+
+        const words = sourceText.split(' ')
+        const numChars = words.slice(0, Math.min(110, words.length)).join(' ').length
+        setCharsArr(() => sourceText.split('').slice(0, numChars).map((char) => ({
             char,
             status: null,
             id: crypto.randomUUID()
         })))
         setCurrIdx(() => 0)
-    }, [sourceText, setCharsArr, setCurrIdx])
-
-    //set source text
-
-    useEffect(() => {
-        const init = () => {
-            const newText = getNewText();
-            setSourceText(newText.text)
-            setSourceTextId(newText.id)
-        }
-        init();
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [setSourceText])
+    }, [sourceText])
+
 }
+
+
+
 
 

@@ -19,6 +19,8 @@ const MainSurface = ({ surfaceRef }: { surfaceRef: React.RefObject<HTMLDivElemen
 
     //pointer to hand off the current DOM node for position motion calc
     const caretPos = useCaretPosition(caretRef, currIdx, charsArr.length, containerRef)
+
+    //start session
     useTypingSession();
 
     //any incorrect keypress in the charsArr?
