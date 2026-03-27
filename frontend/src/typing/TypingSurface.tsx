@@ -9,7 +9,6 @@ import useTypingStore from "./hooks/useTypingStore";
 import ResultsScreen from "./components/ResultsScreen";
 const MainSurface = ({ surfaceRef }: { surfaceRef: React.RefObject<HTMLDivElement | null> }) => {
 
-
     const containerRef = useRef<HTMLDivElement | null>(null);
     const { endTime } = useTypingStore()
     useStartSession();
