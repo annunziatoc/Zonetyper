@@ -40,7 +40,7 @@ body {
   --interactive: light-dark(#0d6efd, #6E87EE);
   --success: light-dark(#198754, #5FB3B4);
   --border: light-dark(#dee2e6, #6E6A86);
-  --footer-guide: light-dark(#646262, #8d8d8e);
+  --footer-guide: light-dark(#212121, #a5a5a7);
   --typing-mask-outline: light-dark(#71708bc4, #71708bc4);
   --typing-mask-error: light-dark(#f92e68ac, #f92e6872);
 
@@ -54,5 +54,6 @@ body {
   /* --border-results: light-dark(#99741c, #6E6A86); */
   /* --background-results: light-dark(#7b818d94,#12141c); */
   --background-results: light-dark(#7b818d94,#272a2d);
+  --text-stats: light-dark(#ce2a40,rgb(209, 44, 69));
 
 }

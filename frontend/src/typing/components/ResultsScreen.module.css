@@ -60,8 +60,9 @@
 }
 
 .statsGrid li span {
-    font-weight: 400;
+    font-weight: 600;
     font-size: 1.25rem;
+    color: var(--text-stats);
 
 }
 
