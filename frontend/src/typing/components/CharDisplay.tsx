@@ -5,10 +5,10 @@ import useTypingStore from "../hooks/useTypingStore"
 import { useCaretPosition } from "../hooks/useCaretPosition"
 import styles from '../TypingSurface.module.css'
 
-const CharDisplay = ({containerRef}: {containerRef: React.RefObject<HTMLDivElement | null>}) => {
+const CharDisplay = ({ containerRef }: { containerRef: React.RefObject<HTMLDivElement | null> }) => {
 
     const caretRef = useRef<HTMLSpanElement>(null);
-    const { charsArr, currIdx } = useTypingStore();
+    const { charsArr, currIdx, sourceTextId } = useTypingStore();
     const caretPos = useCaretPosition(caretRef, currIdx, charsArr.length, containerRef)
 
     return (
@@ -25,8 +25,11 @@ const CharDisplay = ({containerRef}: {containerRef: React.RefObject<HTMLDivEleme
             {
                 caretPos.height > 0 && (
                     <motion.div //caret animation
+                        key={sourceTextId}
                         className={styles.caret}
+                        initial={{ opacity: 0 }}
                         animate={{
+                            opacity: 1,
                             top: caretPos.top, left: caretPos.left,
                             height: caretPos.height, width: caretPos.width
                         }}
