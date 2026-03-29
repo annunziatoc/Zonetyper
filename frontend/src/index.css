@@ -26,14 +26,14 @@ body {
 
   --background: light-dark(#e1dddd, #191a1c);
   --surface: light-dark(#f8f9fa, #31748F);
-  --typing-surface: light-dark(#90949c94, rgba(90, 96, 109, 0.203));
-  --typing-surface-text: light-dark(oklch(42.05% 0.00348 84.489), oklch(73.282% 0.00578 286.049));
+  --typing-surface: light-dark(#7b818d94, rgba(90, 96, 109, 0.203));
+  --typing-surface-text: light-dark(#4e4d4b, oklch(73.282% 0.00578 286.049));
 
   --timer-text: light-dark(oklch(33.265% 0.0038 264.586 / 0.688), oklch(73.282% 0.00578 286.049 / 0.825));
 
   --text-primary: light-dark(#1a1a1a, oklch(92% 0.001 286.375));
   --text-secondary: light-dark(#6b7280, #95AFC7);
-  --caret-background: light-dark(oklch(70.479% 0.01298 96.533), oklch(43.758% 0.00967 99.117));
+  --caret-background: light-dark(oklch(64.272% 0.01186 95.276), oklch(43.758% 0.00967 99.117));
   --text-success: light-dark(oklch(57.105% 0.23631 260.272), oklch(65.721% 0.16625 245.236));
   --text-failure: light-dark(oklch(0.62 0.2681 19.38), oklch(0.63 0.2681 19.38));
   --action: light-dark(#d63384, #CB6583);
@@ -47,4 +47,12 @@ body {
 
   --button-background: light-dark(var(--interactive), #0e56c3);
   --button-text-color: light-dark(#ffffff, var(--text-primary));
+
+
+  /* --font-results: light-dark(#2244ee, #6fcccf); */
+  --font-results: light-dark(#090909, #a7b6b6);
+  /* --border-results: light-dark(#99741c, #6E6A86); */
+  /* --background-results: light-dark(#7b818d94,#12141c); */
+  --background-results: light-dark(#7b818d94,#272a2d);
+
 }

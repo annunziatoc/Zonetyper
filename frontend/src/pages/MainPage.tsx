@@ -3,15 +3,17 @@ import TypingSurface from "../typing/TypingSurface";
 import styles from './MainPage.module.css'
 import Timer from '../typing/components/Timer'
 import useTypingStore from "../typing/hooks/useTypingStore";
+import useTabReset from "../typing/hooks/useTabReset";
 
 const MainPage = () => {
 
     const { endTime } = useTypingStore()
     const surfaceRef = useRef<HTMLDivElement>(null)
-    useEffect(() => {
-        surfaceRef.current?.focus()
-    }, [])
-
+     useEffect(() => {
+        if (!endTime) surfaceRef.current?.focus()
+    }, [endTime])
+    useTabReset()
+   
 
     return (
         <div className={styles.mainPage} onClick={() => surfaceRef.current?.focus()}>
@@ -19,13 +21,12 @@ const MainPage = () => {
             </div>
             <div className={styles.typingSpeedWrapper}>
                 <div style={{ visibility: !endTime ? 'visible' : 'hidden' }}>
-                    <Timer />
+                    <Timer/>
                 </div>
             </div>
             <TypingSurface surfaceRef={surfaceRef} />
         </div>
     )
 }
-
 
 export default MainPage;

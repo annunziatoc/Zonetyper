@@ -1,5 +1,4 @@
 import useTypingStore from "../hooks/useTypingStore";
-import { getNewText } from "../services/typingApi";
 import styles from '../TypingSurface.module.css'
 
 const TypingInput = ({ surfaceRef, children }: {
@@ -7,10 +6,8 @@ const TypingInput = ({ surfaceRef, children }: {
     children: React.ReactNode
 }) => {
 
-    const { setSourceText, currIdx, setCurrIdx,
-        charsArr, setCharsArr, startTime, setStartTime,
-        endTime, setEndTime, setSourceTextId,
-        setErrorCount, resetErrorCount } = useTypingStore();
+    const { currIdx, setCurrIdx, charsArr, setCharsArr, startTime,
+        setStartTime, endTime, setErrorCount } = useTypingStore();
 
     const hasErrors = charsArr.some(cs => cs.status === false)
 
@@ -18,9 +15,8 @@ const TypingInput = ({ surfaceRef, children }: {
         <div ref={surfaceRef} onKeyDown={async (ev) => {
             //at start set the start time
             if (currIdx === 0 && startTime === 0) setStartTime(Date.now())
-            //tab only if out of bounds 
-            //last valid index is charsArr.length - 1
-            if (currIdx >= charsArr.length && ev.key !== 'Tab') return
+            //out of bounds return
+            if (currIdx >= charsArr.length && ev.key !== 'Backspace') return
 
             switch (ev.key) {
                 case 'Backspace':
@@ -38,19 +34,6 @@ const TypingInput = ({ surfaceRef, children }: {
                         }
                         break;
                     }
-                case 'Tab': {
-                    ev.preventDefault();
-                    //reset all state
-                    const newText = getNewText();
-                    setSourceText(newText.text)
-                    setSourceTextId(newText.id)
-                    setCurrIdx(() => 0)
-                    setEndTime(0)
-                    setStartTime(0)
-                    resetErrorCount()
-                    break;
-                }
-
                 //runtime value 
                 //ev.key is what user pressed
                 //charsArr[currIdx].char is what user supposed to press
