@@ -24,15 +24,15 @@ const Header = () => {
                     <span className={styles['logo-typer']}>T y p e r ]</span>
                 </div>
                 <ul className={styles['nav-items']}>
-                    <li>
+                    {/* <li>
                         <span>Race</span>
-                    </li>
+                    </li> */}
                     <li>
                         <span>Leaderboard</span>
                     </li>
-                    <li>
+                    {/* <li>
                         <span>Login</span>
-                    </li>
+                    </li> */}
                     <li onClick={() => setTheme(t => t === 'light' ? 'dark' : 'light')}>
                         <span>Theme</span>
                     </li>

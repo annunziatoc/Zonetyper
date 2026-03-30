@@ -54,6 +54,6 @@ body {
   /* --border-results: light-dark(#99741c, #6E6A86); */
   /* --background-results: light-dark(#7b818d94,#12141c); */
   --background-results: light-dark(#7b818d94,#272a2d);
-  --text-stats: light-dark(#ce2a40,rgb(209, 44, 69));
+  --text-stats: light-dark(rgb(211, 57, 81),rgb(224, 62, 86));
 
 }
