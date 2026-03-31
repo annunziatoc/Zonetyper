@@ -38,7 +38,7 @@ public class TypingSessionController(ZonetyperDbContext db, ILogger<TypingSessio
      public async Task <IActionResult> GetStats()
     {
 
-        var topSpeed = await db.TypingSessions.MaxAsync(s => (double?)s.WPM ?? 0);
+        var topSpeed = (await db.TypingSessions.MaxAsync(s => (double?)s.WPM)) ?? 0;
         var recentStats = await db.TypingSessions
         .OrderByDescending(s => s.CompletedAt)
         .Take(5)
