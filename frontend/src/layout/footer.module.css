@@ -1,5 +1,11 @@
 .footer {
     display: flex;
+    width: 100%;
+    background: var(--radial-bg);
+}
+
+.footerInner {
+    display: flex;
     padding-inline: 5.25rem;
     padding-block: 0.35rem;
     padding-bottom: 0.5rem;

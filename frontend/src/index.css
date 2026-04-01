@@ -24,9 +24,9 @@ body {
   --font-display: 'Audiowide', ui-sans-serif, sans-serif;
   --font-nav-items: 'Recursive', sans-serif;
 
-  --background: light-dark(#e1dddd, #191a1c);
+  --background: light-dark(#ece8e8, #191a1c);
   --surface: light-dark(#f8f9fa, #31748F);
-  --typing-surface: light-dark(#7b818d94, rgba(90, 96, 109, 0.203));
+  --typing-surface: light-dark(#969daa94, rgba(90, 96, 109, 0.203));
   --typing-surface-text: light-dark(#4e4d4b, oklch(73.282% 0.00578 286.049));
 
   --timer-text: light-dark(oklch(33.265% 0.0038 264.586 / 0.688), oklch(73.282% 0.00578 286.049 / 0.825));
@@ -53,7 +53,11 @@ body {
   --font-results: light-dark(#090909, #a7b6b6);
   /* --border-results: light-dark(#99741c, #6E6A86); */
   /* --background-results: light-dark(#7b818d94,#12141c); */
-  --background-results: light-dark(#7b818d94,#272a2d);
+  --background-results: light-dark(#969daa94,#272a2d);
   --text-stats: light-dark(rgb(211, 57, 81),rgb(224, 62, 86));
+
+  --radial-bg: light-dark(#e6e1e1, #1f2021);
+  --loading-bg: light-dark(#ded4d4, #1f2021);
+
 
 }
