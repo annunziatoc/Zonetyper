@@ -14,6 +14,6 @@ export type userStatsDto = {
 
 export async function getUserStats (): Promise<userStatsDto> {
 
-    const res = await fetch('api/sessions/stats')
+    const res = await fetch('/api/sessions/stats')
     return res.json()
 }
