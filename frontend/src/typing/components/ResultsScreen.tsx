@@ -13,9 +13,7 @@ const ResultsScreen = () => {
     const [stats, setStats] = useState<userStatsDto | null>(null);
     useEffect(() => {
         if (!endTime) return
-          setTimeout(() => {
         getUserStats().then(setStats)
-        },10000000)
     }, [endTime])
 
     return (
