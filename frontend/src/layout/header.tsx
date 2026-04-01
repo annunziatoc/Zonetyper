@@ -17,7 +17,7 @@ const Header = () => {
 
 
     return (
-        <header className={styles.header}>
+        <header onMouseDown={e => e.preventDefault()} className={styles.header}>
             <nav className={styles.nav}>
                 <div className={`${styles.logo} ${animate ? styles['logo-animate'] : ''}`} onClick={() => onClickLogo()}>
                     <span className={styles['logo-zone']}>[ Z o n e </span>
