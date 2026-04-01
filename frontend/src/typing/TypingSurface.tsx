@@ -8,7 +8,6 @@ import CharDisplay from "./components/CharDisplay";
 import useTypingStore from "./hooks/useTypingStore";
 import ResultsScreen from "./components/ResultsScreen";
 import { AnimatePresence, motion } from "framer-motion"
-import Loading from "../components/Loading";
 
 const MainSurface = ({ surfaceRef }: { surfaceRef: React.RefObject<HTMLDivElement | null> }) => {
 
