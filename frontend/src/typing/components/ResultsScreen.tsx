@@ -13,33 +13,35 @@ const ResultsScreen = () => {
     const [stats, setStats] = useState<userStatsDto | null>(null);
     useEffect(() => {
         if (!endTime) return
+          setTimeout(() => {
         getUserStats().then(setStats)
+        },10000000)
     }, [endTime])
 
-        ;
     return (
         <div className={styles.container}>
             <div className={styles.heading}>Session Results</div>
-                <div className={styles.card}>
-                    <ul className={styles.statsGrid}>
-                        <li>Speed: <span>{`${finalWpm} `}<small>wpm</small></span></li>
-                        <li>Accuracy: <span>{`${finalAcc} %`}</span></li>
-                        {/* <li>Duration: <span>{`${finalDur} s`}</span></li>
+            <div className={styles.card}>
+                <ul className={styles.statsGrid}>
+                    <li>Speed: <span>{`${finalWpm} `}<small>wpm</small></span></li>
+                    <li>Accuracy: <span>{`${finalAcc} %`}</span></li>
+                    {/* <li>Duration: <span>{`${finalDur} s`}</span></li>
                     <li>Errors: <span>{errorCount}</span></li> */}
-                        {stats ?  <li>Top Speed: <span>{`${stats?.topSpeed} `}<small>wpm</small></span></li> : <Loading/>}
-                       {stats ? <li>Last 5 Avg: <span>
-                            {(() => {
-                                if (!stats?.recentStats) return ''
-                                let sum = 0;
-                                for (const s of stats.recentStats) sum += s.wpm
-                                return Math.round(sum / stats.recentStats.length)
-                            })()}
-                            <small> wpm</small>
-                        </span></li> : <Loading/> }
-                    </ul>
-                    <div className={styles.graph}>
-                    </div>
+                    {stats ? <li>Top Speed: <span>{`${stats?.topSpeed} `}
+                        <small>wpm</small></span></li> : <li><Loading /></li>}
+                    {stats ? <li>Last 5 Avg: <span>
+                        {(() => {
+                            if (!stats?.recentStats) return ''
+                            let sum = 0;
+                            for (const s of stats.recentStats) sum += s.wpm
+                            return Math.round(sum / stats.recentStats.length)
+                        })()}
+                        <small> wpm</small>
+                    </span></li> : <li><Loading/></li>}
+                </ul>
+                <div className={styles.graph}>
                 </div>
+            </div>
             {/* <div className={styles.nextSession}>Tab for Next Quote</div> */}
         </div>
     )

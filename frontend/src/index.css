@@ -56,8 +56,8 @@ body {
   --background-results: light-dark(#969daa94,#272a2d);
   --text-stats: light-dark(rgb(211, 57, 81),rgb(224, 62, 86));
 
-  --radial-bg: light-dark(#e6e1e1, #1f2021);
-  --loading-bg: light-dark(#ded4d4, #1f2021);
+  --radial-bg: light-dark(#e6e1e1, #1d1e1e);
+  --loading-lines-bg: light-dark(#090909, #9eacac);
 
 
 }
