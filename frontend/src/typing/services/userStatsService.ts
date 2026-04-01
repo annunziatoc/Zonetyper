@@ -1,3 +1,4 @@
+const API_BASE = import.meta.env.VITE_API_BASE;
 
 export type userStatsDto = {
     topSpeed: number;
@@ -14,6 +15,6 @@ export type userStatsDto = {
 
 export async function getUserStats (): Promise<userStatsDto> {
 
-    const res = await fetch('/api/sessions/stats')
+    const res = await fetch(`${API_BASE}/api/sessions/stats`)
     return res.json()
 }
