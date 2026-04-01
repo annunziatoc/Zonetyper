@@ -1,3 +1,4 @@
+const API_BASE = import.meta.env.VITE_API_BASE_URL;
 
 export type CreateTypingSessionDto = {
     sourceTextId: number;
@@ -10,7 +11,7 @@ export type CreateTypingSessionDto = {
 
 export async function submitSession(dto: CreateTypingSessionDto) {
 
-    await fetch("/api/sessions", {
+    await fetch(`${API_BASE}/api/sessions`, {
 
         method: "POST",
         headers: { "Content-Type": "application/json" },
