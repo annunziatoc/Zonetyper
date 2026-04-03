@@ -5,9 +5,10 @@ import { submitSession } from "../services/typingSessionService"
 const useEndCompletion = () => {
 
     const { charsArr, startTime, sourceText, sourceTextId, errorCount,
-        setEndTime, setFinalWpm, setFinalAcc, setFinalDur } = useTypingStore()
+        setEndTime, setFinalWpm, setFinalAcc, setFinalDur, finalWpm } = useTypingStore()
 
     useEffect(() => {
+        if (finalWpm > 0) return;
         //if all true then we are done also .every returns true on empty arr
         if (charsArr.every(cs => cs.status === true) && charsArr.length > 0) {
             //for final time
