@@ -1,0 +1,57 @@
+.leaderBoardWrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 90%;
+    max-width: 59rem;
+    width: 100%;
+    padding-inline: 3rem;
+    margin: 0 auto;
+    margin-top: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 0 16px rgba(0, 0, 0, 0.3);
+    padding-top: 2rem;
+    font-family: var(--font-nav-items);
+    background-color: var(--leaderboard-bg);
+}
+
+.categoriesWrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+.lbRecord {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    align-items: center;
+    text-align: center;
+    background-color: var(--leaderboard-row-even);
+    border-radius: 4px;
+    height: 2.5rem;
+}
+
+.lbRecord:nth-child(even) {
+    background-color: var(--leaderboard-row-alt);
+}
+
+
+.exitButton {
+    position: absolute;
+    scale: 165%;
+    right: 1rem;
+    top: 1rem;
+    padding-block: 0.025rem;
+    padding-inline: 0.3rem;
+    cursor: pointer;
+    width: fit-content;
+    border-radius: 10;
+    background-color: var(--leaderboard-exit-bg);
+    border-radius: 2px;
+    color: var(--leaderboard-exit-button);
+}
+
+.exitButton:hover {
+ color: var(--leaderboard-exit-button-hover);
+}

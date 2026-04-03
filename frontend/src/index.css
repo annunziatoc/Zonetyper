@@ -50,7 +50,7 @@ body {
 
 
   /* --font-results: light-dark(#2244ee, #6fcccf); */
-  --font-results: light-dark(#090909, #a7b6b6);
+    --font-results: light-dark(#090909, #a7b6b6);
   /* --border-results: light-dark(#99741c, #6E6A86); */
   /* --background-results: light-dark(#7b818d94,#12141c); */
   --background-results: light-dark(#969daa94,#272a2d);
@@ -58,6 +58,14 @@ body {
 
   --radial-bg: light-dark(#e6e1e1, #1d1e1e);
   --loading-lines-bg: light-dark(#090909, #9eacac);
+  --leaderboard-bg: light-dark(#dfdada, #262629);
 
+  --leaderboard-row-even: light-dark(#d5d1d1, #383839);
+  --leaderboard-row-alt: light-dark(#b5abab, #535051);
+  --leaderboard-exit-bg: light-dark(#aca9a9, #313234);
+  --leaderboard-exit-button: light-dark(#cac2c2, #8a8f94);
+  --leaderboard-exit-button-hover: light-dark(#f3ebeb, #b6bbc1);
+
+  
 
 }

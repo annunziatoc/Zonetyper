@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Data.SqlTypes;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ZonetyperApi.Models;
 
@@ -33,9 +34,9 @@ public class TypingSessionController(ZonetyperDbContext db, ILogger<TypingSessio
             return StatusCode(500, "Failed to save session");
         }
     }
-    
-    [HttpGet("stats")] 
-     public async Task <IActionResult> GetStats()
+
+    [HttpGet("stats")]
+    public async Task<IActionResult> GetStats()
     {
 
         var topSpeed = (await db.TypingSessions.MaxAsync(s => (double?)s.WPM)) ?? 0;
@@ -45,5 +46,17 @@ public class TypingSessionController(ZonetyperDbContext db, ILogger<TypingSessio
         .ToListAsync();
 
         return Ok(new { topSpeed, recentStats });
+    }
+
+
+    [HttpGet("leaderboard")]
+    public async Task<IActionResult> GetLeaderboardStats()
+    {
+        var leaderboardStats = await db.TypingSessions
+        .OrderByDescending(s => s.WPM)
+        .Take(15)
+        .Select(s => new { s.WPM, s.Accuracy })
+        .ToListAsync();
+        return Ok(leaderboardStats);
     }
 }

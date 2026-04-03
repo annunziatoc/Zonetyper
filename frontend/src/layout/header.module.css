@@ -22,14 +22,14 @@
     margin: -7px;
     list-style: none;
 }
-
-.nav-items>li>span{
+.nav-items>li>span,
+.nav-items>li>a>span {
     position: relative;
     display: inline-block;
-    
 }
 
-.nav-items>li>span::after {
+.nav-items>li>span::after,
+.nav-items>li>a>span::after {
     position: absolute;
     content: '';
     height: 0.25rem;
@@ -41,7 +41,8 @@
 }
 
 
-.nav-items>li>span:hover::after {
+.nav-items>li>span:hover::after,
+.nav-items>li>a>span:hover::after {
     width: 100%;
 }
 
@@ -67,4 +68,7 @@
 
 }
 
-.logo-animate {}
+.navLink {
+  text-decoration: none;
+  color: inherit;
+}

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import styles from './header.module.css'
+import { Link } from "react-router-dom";
 
 const Header = () => {
 
@@ -19,16 +20,18 @@ const Header = () => {
     return (
         <header onMouseDown={e => e.preventDefault()} className={styles.header}>
             <nav className={styles.nav}>
-                <div className={`${styles.logo} ${animate ? styles['logo-animate'] : ''}`} onClick={() => onClickLogo()}>
-                    <span className={styles['logo-zone']}>[ Z o n e </span>
-                    <span className={styles['logo-typer']}>T y p e r ]</span>
-                </div>
+                <Link className={styles.navLink} to="/">
+                    <div className={`${styles.logo} ${animate ? styles['logo-animate'] : ''}`} onClick={() => onClickLogo()}>
+                        <span className={styles['logo-zone']}>[ Z o n e </span>
+                        <span className={styles['logo-typer']}>T y p e r ]</span>
+                    </div>
+                </Link>
                 <ul className={styles['nav-items']}>
                     {/* <li>
                         <span>Race</span>
                     </li> */}
                     <li>
-                        <span>Leaderboard</span>
+                        <Link to="/leaderboard" className={styles.navLink}><span>Leaderboard</span></Link>
                     </li>
                     {/* <li>
                         <span>Login</span>
