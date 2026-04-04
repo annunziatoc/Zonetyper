@@ -1,19 +1,9 @@
 import { useEffect } from "react"
-import { getNewText } from "../services/typingApi"
 import useTypingStore from "./useTypingStore";
-
-
 
 export const useStartSession = () => {
 
-    const { sourceText, setCharsArr, setCurrIdx, setSourceText, setSourceTextId } = useTypingStore();
-
-    //initialize source text
-    useEffect(() => {
-        const newText = getNewText();
-        setSourceText(newText.text)
-        setSourceTextId(newText.id)
-    }, [])
+    const { sourceText, setCharsArr, setCurrIdx, setStartTime, setFinalWpm, setFinalAcc,  setFinalDur, setEndTime, resetErrorCount } = useTypingStore();
 
     //populate the charsArr
     //slice up until a certain number of words
@@ -27,11 +17,13 @@ export const useStartSession = () => {
             id: crypto.randomUUID()
         })))
         setCurrIdx(() => 0)
+        setStartTime(0)
+        setFinalWpm(0)
+        setFinalAcc(0)
+        setFinalDur(0)
+        setEndTime(0)
+        resetErrorCount()
+
     }, [sourceText])
 
 }
-
-
-
-
-
