@@ -1,29 +1,26 @@
 
-import { useEffect } from "react"
 import useTypingStore from "../hooks/useTypingStore"
 import styles from './WPMChart.module.css'
+import { CartesianGrid, Line, LineChart, XAxis, YAxis } from "recharts"
 
 const WPMChart = () => {
 
-    const { charsArr, startTime, addWpmHistory } = useTypingStore()
-
-    const wordsCompleted = charsArr.filter((cs) => cs.char === ' ' && cs.status === true).length
-
-    useEffect(() => {
-        //now here to prevent stale value
-        const now = Date.now()
-        const elapsedMin = (now - startTime) / 60000
-        const wpm = (wordsCompleted / elapsedMin)
-        //copy of chars arr so store stays intact
-        const lastCompleted = [...charsArr].reverse().find((cs) => cs.status === true && cs.char === ' ')
-        if (!startTime || !wordsCompleted || lastCompleted?.char !== ' ') return
-        addWpmHistory(wpm)
-    }, [charsArr])
-
+    const { wpmHistory } = useTypingStore()
     return (
         <div className={styles.chartContainer}>
-
-        </div>
+            <LineChart  responsive width="100%" height="100%" style={{ width: '100%', aspectRatio: 1.618, maxWidth: 800, margin: 'auto' }} data={wpmHistory.slice(10).filter((entry, i , arr) => i === 0 || entry.time !== arr[i-1].time)}>
+                <CartesianGrid stroke="var(--color-border-3)" strokeDasharray="5 5" />
+                <XAxis dataKey="time" stroke="var(--charts-x-axis)" /> 
+                <YAxis width="auto" stroke="var(--charts-y-axis)" />
+                <Line
+                    strokeWidth={2.3} 
+                    type="monotone"
+                    dot={false}
+                    dataKey="wpm"
+                    stroke="var(--charts-line-stroke)"
+                />
+            </LineChart>
+        </div >
     )
 }
 

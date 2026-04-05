@@ -3,6 +3,7 @@ import useTypingStore from "../hooks/useTypingStore";
 import { getUserStats, type userStatsDto } from "../services/userStatsService";
 import styles from './ResultsScreen.module.css'
 import Loading from "../../components/Loading";
+import WPMChart from "../components/WPMChart";
 
 const ResultsScreen = () => {
 
@@ -18,7 +19,6 @@ const ResultsScreen = () => {
 
     return (
         <div className={styles.container}>
-            <div className={styles.heading}>Session Results</div>
             <div className={styles.card}>
                 <ul className={styles.statsGrid}>
                     <li>Speed: <span>{`${finalWpm} `}<small>wpm</small></span></li>
@@ -35,12 +35,10 @@ const ResultsScreen = () => {
                             return Math.round(sum / stats.recentStats.length)
                         })()}
                         <small> wpm</small>
-                    </span></li> : <li><Loading/></li>}
+                    </span></li> : <li><Loading /></li>}
                 </ul>
-                <div className={styles.graph}>
-                </div>
+                <WPMChart/>
             </div>
-            {/* <div className={styles.nextSession}>Tab for Next Quote</div> */}
         </div>
     )
 }

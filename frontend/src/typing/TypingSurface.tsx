@@ -8,12 +8,14 @@ import CharDisplay from "./components/CharDisplay";
 import useTypingStore from "./hooks/useTypingStore";
 import ResultsScreen from "./components/ResultsScreen";
 import { AnimatePresence, motion } from "framer-motion"
+import useWPMTracking from "./hooks/useWPMTracking";
 
 const MainSurface = ({ surfaceRef }: { surfaceRef: React.RefObject<HTMLDivElement | null> }) => {
 
     const containerRef = useRef<HTMLDivElement | null>(null);
     const { endTime, sourceTextId } = useTypingStore()
     useStartSession();
+    useWPMTracking();
     useEndSession();
 
     return (

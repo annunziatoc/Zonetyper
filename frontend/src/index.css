@@ -66,6 +66,9 @@ body {
   --leaderboard-exit-button: light-dark(#cac2c2, #8a8f94);
   --leaderboard-exit-button-hover: light-dark(#f3ebeb, #b6bbc1);
 
+  --charts-x-axis: light-dark(#2b2a2a, #b6bbc1);
+  --charts-y-axis: light-dark(#2b2a2a, #b6bbc1);
+  --charts-line-stroke: light-dark(#2b2a2a, #b6bbc1);
   
 
 }

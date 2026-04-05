@@ -6,6 +6,7 @@ interface CharState {
     id: string;
 }
 
+
 //avoid stale closure problem by passing updater
 type Updater<T> = (prev: T) => T;
 
@@ -20,8 +21,8 @@ interface TypingState {
     finalAcc: number;
     finalDur: number;
     errorCount: number;
-    wpmHistory: number[];
-    addWpmHistory: (wpm: number) => void;
+    wpmHistory: { time: number; wpm: number }[];
+    addWpmHistory: (entry: { time: number;  wpm: number}) => void;
     resetWpmHistory: () => void;
     setSourceText: (text: string) => void;
     setSourceTextId: (id: number) => void;
@@ -49,7 +50,7 @@ const useTypingStore = create<TypingState>((set) => ({
     finalDur: 0,
     errorCount: 0,
     wpmHistory: [],
-    addWpmHistory: ((wpm: number) => set((state) => ({ wpmHistory: [...state.wpmHistory, wpm] }))),
+    addWpmHistory: ((entry) => set((state) => ({ wpmHistory: [...state.wpmHistory, { time: entry.time, wpm: entry.wpm}] }))),
     resetWpmHistory: () => set(() => ({ wpmHistory: [] })),
     setSourceText: ((text: string) => set({ sourceText: text })),
     setSourceTextId: ((id: number) => set({ sourceTextId: id })),
