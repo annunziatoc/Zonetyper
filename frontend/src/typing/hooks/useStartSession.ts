@@ -5,7 +5,7 @@ import { getNewText } from "../services/typingApi";
 export const useStartSession = () => {
 
     const { sourceText, setCharsArr, setCurrIdx, setStartTime,
-        setFinalWpm, setFinalAcc, setFinalDur,
+        setFinalWpm, setFinalAcc, setFinalDur, resetWpmHistory,
         setEndTime, resetErrorCount, setSourceText, setSourceTextId } = useTypingStore();
 
     useEffect(() => {
@@ -13,8 +13,6 @@ export const useStartSession = () => {
         setSourceText(newText.text);
         setSourceTextId(newText.id);
     }, [])
-
-
 
     //populate the charsArr
     //slice up until a certain number of words
@@ -33,8 +31,8 @@ export const useStartSession = () => {
         setFinalAcc(0)
         setFinalDur(0)
         setEndTime(0)
+        resetWpmHistory()
         resetErrorCount()
-
     }, [sourceText])
 
 }

@@ -4,7 +4,7 @@ interface CharState {
     char: string;
     status: null | true | false;
     id: string;
-} 
+}
 
 //avoid stale closure problem by passing updater
 type Updater<T> = (prev: T) => T;
@@ -20,6 +20,9 @@ interface TypingState {
     finalAcc: number;
     finalDur: number;
     errorCount: number;
+    wpmHistory: number[];
+    addWpmHistory: (wpm: number) => void;
+    resetWpmHistory: () => void;
     setSourceText: (text: string) => void;
     setSourceTextId: (id: number) => void;
     setCurrIdx: (fn: Updater<number>) => void;
@@ -45,17 +48,20 @@ const useTypingStore = create<TypingState>((set) => ({
     finalAcc: 0,
     finalDur: 0,
     errorCount: 0,
+    wpmHistory: [],
+    addWpmHistory: ((wpm: number) => set((state) => ({ wpmHistory: [...state.wpmHistory, wpm] }))),
+    resetWpmHistory: () => set(() => ({ wpmHistory: [] })),
     setSourceText: ((text: string) => set({ sourceText: text })),
     setSourceTextId: ((id: number) => set({ sourceTextId: id })),
     setCurrIdx: (fn) => set((state) => ({ currIdx: fn(state.currIdx) })),
     setCharsArr: (fn) => set((state) => ({ charsArr: fn(state.charsArr) })),
-    setStartTime: (time) => set({startTime: time}),
+    setStartTime: (time) => set({ startTime: time }),
     setEndTime: (time) => set({ endTime: time }),
-    setFinalWpm: (wpm) => set({finalWpm: wpm}),
-    setFinalAcc: (acc) => set({finalAcc: acc}),
-    setFinalDur: (dur) => set({finalDur: dur}),
+    setFinalWpm: (wpm) => set({ finalWpm: wpm }),
+    setFinalAcc: (acc) => set({ finalAcc: acc }),
+    setFinalDur: (dur) => set({ finalDur: dur }),
     setErrorCount: () => set((state) => ({ errorCount: state.errorCount + 1 })),
-    resetErrorCount: () =>  set({errorCount: 0}),
+    resetErrorCount: () => set({ errorCount: 0 }),
 }))
 
 
