@@ -37,7 +37,10 @@
     background-color: var(--stats-grid-bg);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
     color: var(--stats-grid-font);
-    
+}
+
+.statsGrid li:hover {
+    scale: 105%;
 }
 
 .statsGrid li span {
@@ -55,7 +58,7 @@
     grid-template-columns: 1fr auto;
     font-weight: 500;
     align-items: end;
-        color: var(--stats-grid-font);
+    color: var(--stats-grid-font);
 }
 
 .graphFlexInner {
