@@ -37,7 +37,13 @@ const ResultsScreen = () => {
                         <small> wpm</small>
                     </span></li> : <li><Loading /></li>}
                 </ul>
-                <WPMChart/>
+                <div className={styles.graphGridOuter}>
+                    <div className={styles.graphFlexInner}>
+                        <div>Words Per Minute</div>
+                        <WPMChart />
+                    </div>
+                    <div className={styles.seconds}>Seconds</div>
+                </div>
             </div>
         </div>
     )

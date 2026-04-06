@@ -3,8 +3,7 @@ import useTypingStore from "./useTypingStore"
 
 const useWPMTracking = () => {
 
-     const { charsArr, startTime, addWpmHistory } = useTypingStore()
-
+    const { charsArr, startTime, addWpmHistory } = useTypingStore()
     const wordsCompleted = charsArr.filter((cs) => cs.char === ' ' && cs.status === true).length
 
     useEffect(() => {
@@ -16,7 +15,7 @@ const useWPMTracking = () => {
         //copy of chars arr so store stays intact
         const lastCompleted = [...charsArr].reverse().find((cs) => cs.status === true && cs.char === ' ')
         if (!startTime || !wordsCompleted || lastCompleted?.char !== ' ') return
-        addWpmHistory({time: elapsedSeconds, wpm: wpm})
+        addWpmHistory({ time: elapsedSeconds, wpm: wpm })
     }, [charsArr])
 }
 

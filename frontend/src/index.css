@@ -24,8 +24,7 @@ body {
   --font-display: 'Audiowide', ui-sans-serif, sans-serif;
   --font-nav-items: 'Recursive', sans-serif;
 
-  --background: light-dark(#ece8e8, #191a1c);
-  --surface: light-dark(#f8f9fa, #31748F);
+  --background: light-dark(#ece8e8, #232424);
   --typing-surface: light-dark(#969daa94, rgba(90, 96, 109, 0.203));
   --typing-surface-text: light-dark(#4e4d4b, oklch(73.282% 0.00578 286.049));
 
@@ -49,11 +48,8 @@ body {
   --button-text-color: light-dark(#ffffff, var(--text-primary));
 
 
-  /* --font-results: light-dark(#2244ee, #6fcccf); */
-    --font-results: light-dark(#090909, #a7b6b6);
-  /* --border-results: light-dark(#99741c, #6E6A86); */
-  /* --background-results: light-dark(#7b818d94,#12141c); */
-  --background-results: light-dark(#969daa94,#272a2d);
+  --font-results: light-dark(#090909, #a7b6b6);
+  --background-results: light-dark(#c2c4c894,#1f2123);
   --text-stats: light-dark(rgb(211, 57, 81),rgb(224, 62, 86));
 
   --radial-bg: light-dark(#e6e1e1, #1d1e1e);
@@ -66,9 +62,9 @@ body {
   --leaderboard-exit-button: light-dark(#cac2c2, #8a8f94);
   --leaderboard-exit-button-hover: light-dark(#f3ebeb, #b6bbc1);
 
-  --charts-x-axis: light-dark(#2b2a2a, #b6bbc1);
-  --charts-y-axis: light-dark(#2b2a2a, #b6bbc1);
-  --charts-line-stroke: light-dark(#2b2a2a, #b6bbc1);
-  
-
+  --charts-x-axis: light-dark(#757474, #7c7f82);
+  --charts-y-axis: light-dark(#757474, #7c7f82);
+  --charts-line-stroke: light-dark(#090909, #b6bbc1);
+  --stats-grid-bg: light-dark(#c7c7cb, #2d2e31);
+  --stats-grid-font: light-dark(rgb(71, 72, 73), #a4a6ab);
 }

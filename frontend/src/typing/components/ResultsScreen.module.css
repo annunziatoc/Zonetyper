@@ -8,18 +8,8 @@
     background-color: var(--background-results);
     padding: 0.7rem;
     margin-top: -4px;
-    width: 50rem;
+    width: 59rem;
     height: 20rem;
-}
-
-.container::before {
-    content: '';
-    inset: 0;
-    position: absolute;
-    background-image: url('/assets/texture_mask.webp');
-    background-size: cover;
-    opacity: .1;
-    pointer-events: none;
 }
 
 .card {
@@ -32,17 +22,22 @@
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+    justify-content: center;
 }
 
 .statsGrid li {
     display: flex;
     flex-direction: column;
     padding: 0.25rem;
-    border-radius: 10px;
+    border-radius: 6px;
     list-style: none;
     font-size: 1rem;
     font-weight: 700;
     gap: 3px;
+    background-color: var(--stats-grid-bg);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    color: var(--stats-grid-font);
+    
 }
 
 .statsGrid li span {
@@ -52,4 +47,28 @@
     font-weight: 600;
     font-size: 1.25rem;
     color: var(--text-stats);
+}
+
+.graphGridOuter {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    font-weight: 500;
+    align-items: end;
+        color: var(--stats-grid-font);
+}
+
+.graphFlexInner {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.graphFlexInner :focus {
+    outline: none;
+}
+
+.seconds {
+    padding-bottom: 26px;
+    padding-left: 8px;
 }

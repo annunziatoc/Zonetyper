@@ -1,13 +1,16 @@
 import { useEffect } from "react";
 import { getNewText } from "../services/typingApi";
 import useTypingStore from "./useTypingStore";
+import { useNavigate } from "react-router";
 
 const useTabReset = () => {
 
+    const navigate = useNavigate()
     const { setSourceText, setSourceTextId } = useTypingStore();
 
     useEffect(() => {
         const handler = (ev: KeyboardEvent) => {
+            if (ev.key === 'Escape') { navigate('/'); return; }
             if (ev.key !== 'Tab') return
             ev.preventDefault();
             const newText = getNewText();
