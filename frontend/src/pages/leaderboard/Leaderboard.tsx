@@ -7,7 +7,7 @@ import Loading from "../../components/Loading";
 
 const Leaderboard = () => {
 
-    const [leaderboardStats, setLeaderBoardStats] = useState<LeaderboardEntryDto[]>([])
+    const [leaderboardStats, setLeaderBoardStats] = useState<LeaderboardEntryDto[] | null>(null)
     useEscapeNav();
 
     useEffect(() => {
@@ -37,7 +37,7 @@ const Leaderboard = () => {
                             <div>{`${arr.accuracy}%`}</div>
                         </div>
                     )
-                }) : <Loading />}
+                }) : <Loading/>}
 
         </div >
 
