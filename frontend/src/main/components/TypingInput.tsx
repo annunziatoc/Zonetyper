@@ -1,5 +1,5 @@
 import useTypingStore from "../hooks/useTypingStore";
-import styles from '../TypingSurface.module.css'
+import styles from '../components/TypingSurface.module.css'
 
 const TypingInput = ({ surfaceRef, children }: {
     surfaceRef: React.RefObject<HTMLDivElement | null>,

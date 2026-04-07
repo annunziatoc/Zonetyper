@@ -21,8 +21,10 @@ interface TypingState {
     finalAcc: number;
     finalDur: number;
     errorCount: number;
+    currentQuote: string;
     wpmHistory: { time: number; wpm: number }[];
-    addWpmHistory: (entry: { time: number;  wpm: number}) => void;
+    setCurrentQuote: (quote: string) => void;
+    addWpmHistory: (entry: { time: number; wpm: number }) => void;
     resetWpmHistory: () => void;
     setSourceText: (text: string) => void;
     setSourceTextId: (id: number) => void;
@@ -35,6 +37,7 @@ interface TypingState {
     setFinalDur: (dur: number) => void;
     setErrorCount: () => void;
     resetErrorCount: () => void;
+    resetSession: () => void;
 }
 
 
@@ -50,7 +53,9 @@ const useTypingStore = create<TypingState>((set) => ({
     finalDur: 0,
     errorCount: 0,
     wpmHistory: [],
-    addWpmHistory: ((entry) => set((state) => ({ wpmHistory: [...state.wpmHistory, { time: entry.time, wpm: entry.wpm}] }))),
+    currentQuote: '',
+    setCurrentQuote: (quote: string) => set(({ currentQuote: quote })),
+    addWpmHistory: ((entry) => set((state) => ({ wpmHistory: [...state.wpmHistory, { time: entry.time, wpm: entry.wpm }] }))),
     resetWpmHistory: () => set(() => ({ wpmHistory: [] })),
     setSourceText: ((text: string) => set({ sourceText: text })),
     setSourceTextId: ((id: number) => set({ sourceTextId: id })),
@@ -63,6 +68,17 @@ const useTypingStore = create<TypingState>((set) => ({
     setFinalDur: (dur) => set({ finalDur: dur }),
     setErrorCount: () => set((state) => ({ errorCount: state.errorCount + 1 })),
     resetErrorCount: () => set({ errorCount: 0 }),
+    resetSession: () => set({
+        currIdx: 0,
+        charsArr: [],
+        startTime: 0,
+        endTime: 0,
+        finalWpm: 0,
+        finalAcc: 0,
+        finalDur: 0,
+        errorCount: 0,
+        wpmHistory: [],
+    })
 }))
 
 

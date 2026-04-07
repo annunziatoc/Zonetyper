@@ -1,7 +1,8 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import Layout from "./layout/layout"
-import MainPage from "./pages/MainPage"
-import Leaderboard from "./pages/leaderboard/Leaderboard"
+import MainPage from "./routes/Index"
+import Leaderboard from "./routes/Leaderboard"
+import ResultsScreen from "./routes/Results"
 function App() {
 
    
@@ -11,6 +12,7 @@ function App() {
                 <Route element={<Layout />}>
                     <Route index element={<MainPage />} />
                     <Route path="/leaderboard" element={<Leaderboard />} />
+                    <Route path="/results" element={<ResultsScreen />} />
                 </Route>
             </Routes>
         </BrowserRouter>

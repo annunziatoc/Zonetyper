@@ -1,17 +1,16 @@
 import { useEffect, useState } from "react";
-import { getLeaderboardStats, type LeaderboardEntryDto } from "../../leaderboard/services/leaderboardService";
+import { getLeaderboardStats, type LeaderboardEntryDto } from "../leaderboard/services/leaderboardService";
 import styles from './Leaderboard.module.css'
 import { Link } from "react-router-dom";
-import { useEscapeNav } from "../../hooks/useEscapeNav";
-import Loading from "../../components/Loading";
+import { useEscapeNav } from "../shared/hooks/useEscapeNav";
+import Loading from "../shared/components/Loading";
 
 const Leaderboard = () => {
 
     const [leaderboardStats, setLeaderBoardStats] = useState<LeaderboardEntryDto[] | null>(null)
     useEscapeNav();
-
     useEffect(() => {
-        getLeaderboardStats().then((data) => setLeaderBoardStats(data))
+            getLeaderboardStats().then((data) => setLeaderBoardStats(data))
     }, [])
 
     return (
@@ -37,7 +36,8 @@ const Leaderboard = () => {
                             <div>{`${arr.accuracy}%`}</div>
                         </div>
                     )
-                }) : <Loading/>}
+                }) :
+                <div className={styles.loadingWrapper}><Loading /></div>}
 
         </div >
 

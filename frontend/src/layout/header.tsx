@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import styles from './header.module.css'
 import { Link } from "react-router-dom";
+import useTypingStore from "../main/hooks/useTypingStore";
 
 const Header = () => {
 
     const [theme, setTheme] = useState<'light' | 'dark'>('dark')
     const [animate, setAnimate] = useState(false)
+    const {resetSession, endTime} = useTypingStore()
 
 
     useEffect(() => {
@@ -14,6 +16,7 @@ const Header = () => {
 
     const onClickLogo = () => {
         setAnimate(!animate)
+        if (endTime) resetSession();
     }
 
 

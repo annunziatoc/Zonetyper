@@ -3,7 +3,7 @@ import { useRef } from "react"
 import { motion } from "framer-motion"
 import useTypingStore from "../hooks/useTypingStore"
 import { useCaretPosition } from "../hooks/useCaretPosition"
-import styles from '../TypingSurface.module.css'
+import styles from '../components/TypingSurface.module.css'
 
 const CharDisplay = ({ containerRef }: { containerRef: React.RefObject<HTMLDivElement | null> }) => {
 

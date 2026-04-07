@@ -1,9 +1,8 @@
 import { useEffect, useRef } from "react";
-import TypingSurface from "../typing/TypingSurface";
-import styles from './MainPage.module.css'
-import Timer from '../typing/components/Timer'
-import useTypingStore from "../typing/hooks/useTypingStore";
-import useTabReset from "../typing/hooks/useTabReset";
+import TypingSurface from "../main/components/TypingSurface";
+import styles from './Index.module.css'
+import Timer from '../main/components/Timer'
+import useTypingStore from "../main/hooks/useTypingStore";
 
 const MainPage = () => {
 
@@ -16,7 +15,6 @@ const MainPage = () => {
             },225)
         }
     }, [endTime])
-    useTabReset()
 
 
     return (

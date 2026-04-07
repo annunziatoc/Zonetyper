@@ -4,12 +4,13 @@ import { getNewText } from "../services/typingApi";
 
 export const useStartSession = () => {
 
-    const { sourceText, setCharsArr, setCurrIdx, setStartTime,
-        setFinalWpm, setFinalAcc, setFinalDur, resetWpmHistory,
-        setEndTime, resetErrorCount, setSourceText, setSourceTextId } = useTypingStore();
+    const { sourceText, setCharsArr,resetSession, setSourceText, setSourceTextId,
+    setCurrentQuote, currentQuote} = useTypingStore();
 
     useEffect(() => {
+        if (currentQuote) return; 
         const newText = getNewText();
+        setCurrentQuote(newText.text);
         setSourceText(newText.text);
         setSourceTextId(newText.id);
     }, [])
@@ -20,19 +21,12 @@ export const useStartSession = () => {
 
         const words = sourceText.split(' ')
         const numChars = words.slice(0, Math.min(105, words.length)).join(' ').length
+        resetSession();
         setCharsArr(() => sourceText.split('').slice(0, numChars).map((char) => ({
             char,
             status: null,
             id: crypto.randomUUID()
         })))
-        setCurrIdx(() => 0)
-        setStartTime(0)
-        setFinalWpm(0)
-        setFinalAcc(0)
-        setFinalDur(0)
-        setEndTime(0)
-        resetWpmHistory()
-        resetErrorCount()
     }, [sourceText])
 
 }
