@@ -3,6 +3,7 @@ import { getLeaderboardStats, type LeaderboardEntryDto } from "../../leaderboard
 import styles from './Leaderboard.module.css'
 import { Link } from "react-router-dom";
 import { useEscapeNav } from "../../hooks/useEscapeNav";
+import Loading from "../../components/Loading";
 
 const Leaderboard = () => {
 
@@ -26,17 +27,18 @@ const Leaderboard = () => {
                 <div>Accuracy</div>
             </div>
 
+            {leaderboardStats ?
+                leaderboardStats.map((arr, idx) => {
+                    return (
+                        <div key={idx} className={styles.lbRecord}>
+                            <div>{`${idx + 1}`}</div>
+                            <div>{`dummyUser`}</div>
+                            <div>{`${arr.wpm}`}</div>
+                            <div>{`${arr.accuracy}%`}</div>
+                        </div>
+                    )
+                }) : <Loading />}
 
-            {leaderboardStats.map((arr, idx) => {
-                return (
-                    <div key={idx} className={styles.lbRecord}>
-                        <div>{`${idx + 1}`}</div>
-                        <div>{`dummyUser`}</div>
-                        <div>{`${arr.wpm}`}</div>
-                        <div>{`${arr.accuracy}%`}</div>
-                    </div>
-                )
-            })}
         </div >
 
 
