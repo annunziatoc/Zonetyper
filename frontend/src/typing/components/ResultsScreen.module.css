@@ -35,7 +35,7 @@
     font-weight: 700;
     gap: 3px;
     background-color: var(--stats-grid-bg);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 2px 4px var(--stats-grid-shadow);
     color: var(--stats-grid-font);
 }
 
