@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"
-import Layout from "./layout/layout"
+import Layout from "./layout/Layout"
 import MainPage from "./routes/Index"
 import Leaderboard from "./routes/Leaderboard"
 import ResultsScreen from "./routes/Results"

@@ -1,7 +1,7 @@
-import Header from "./header";
-import Footer from "./footer";
+import Header from "./Header";
+import Footer from "./Footer";
 import { Outlet } from "react-router";
-import styles from './layout.module.css'
+import styles from './Layout.module.css'
 import useTabReset from "../main/hooks/useTabReset";
 
 

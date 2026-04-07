@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import styles from './header.module.css'
+import styles from './Header.module.css'
 import { Link } from "react-router-dom";
 import useTypingStore from "../main/hooks/useTypingStore";
 
