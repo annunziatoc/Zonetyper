@@ -5,3 +5,14 @@
     overflow: hidden;
 }
 
+
+.content {
+     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--background);
+    background-image: radial-gradient(circle, var(--radial-bg) 2px, transparent 2px);
+    background-size: 4px 4px;
+    background-position: 0 0, 2px 2px;
+}
