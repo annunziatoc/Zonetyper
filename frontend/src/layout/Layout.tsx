@@ -2,7 +2,7 @@ import Header from "./Header";
 import Footer from "./Footer";
 import { Outlet } from "react-router";
 import styles from './Layout.module.css'
-import useTabReset from "../main/hooks/useTabReset";
+import useTabReset from "../typer/hooks/useTabReset";
 
 
 const Layout = () => {

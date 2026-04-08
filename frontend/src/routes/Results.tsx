@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import useTypingStore from "../main/hooks/useTypingStore";
-import { getUserStats, type userStatsDto } from "../main/services/userStatsService";
+import useTypingStore from "../typer/hooks/useTypingStore";
+import { getUserStats, type userStatsDto } from "../typer/services/userStatsService";
 import styles from './Results.module.css'
 import Loading from "../shared/components/Loading";
-import WPMChart from "../main/components/WPMChart";
+import WPMChart from "../typer/components/WPMChart";
 
-const ResultsScreen = () => {
+const Results = () => {
     const {
         finalWpm, endTime, finalAcc,
         //    errorCount, finalDur,
@@ -49,4 +49,4 @@ const ResultsScreen = () => {
 }
 
 
-export default ResultsScreen;
+export default Results;

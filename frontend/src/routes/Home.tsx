@@ -1,10 +1,10 @@
 import { useEffect, useRef } from "react";
-import TypingSurface from "../main/components/TypingSurface";
-import styles from './Index.module.css'
-import Timer from '../main/components/Timer'
-import useTypingStore from "../main/hooks/useTypingStore";
+import TypingSurface from "../typer/components/TypingSurface";
+import styles from './Home.module.css'
+import Timer from '../typer/components/Timer'
+import useTypingStore from "../typer/hooks/useTypingStore";
 
-const MainPage = () => {
+const Home = () => {
 
     const { endTime } = useTypingStore()
     const surfaceRef = useRef<HTMLDivElement>(null)
@@ -31,4 +31,4 @@ const MainPage = () => {
     )
 }
 
-export default MainPage;
+export default Home;

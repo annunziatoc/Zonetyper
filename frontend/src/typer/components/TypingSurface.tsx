@@ -6,7 +6,7 @@ import TypingInput from "./TypingInput";
 import ErrorDisplay from "./ErrorDisplay";
 import CharDisplay from "./CharDisplay";
 import useTypingStore from "../hooks/useTypingStore";
-import ResultsScreen from "../../routes/Results";
+import Results from "../../routes/Results";
 import { AnimatePresence, motion } from "framer-motion"
 import useWPMTracking from "../hooks/useWPMTracking";
 import { useNavigate } from "react-router-dom";
@@ -45,7 +45,7 @@ const MainSurface = ({ surfaceRef }: { surfaceRef: React.RefObject<HTMLDivElemen
                     </motion.div>
                     :
                     <motion.div key="results" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.15 }}>
-                        <ResultsScreen />
+                        <Results />
                     </motion.div>
                 }
             </AnimatePresence>

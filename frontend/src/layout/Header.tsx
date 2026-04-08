@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import styles from './Header.module.css'
 import { Link } from "react-router-dom";
-import useTypingStore from "../main/hooks/useTypingStore";
+import useTypingStore from "../typer/hooks/useTypingStore";
 
 const Header = () => {
 
