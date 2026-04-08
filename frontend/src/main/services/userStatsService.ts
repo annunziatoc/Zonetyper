@@ -16,5 +16,10 @@ export type userStatsDto = {
 export async function getUserStats (): Promise<userStatsDto> {
 
     const res = await fetch(`${API_BASE}/api/sessions/stats`)
+
+    if (!res.ok) {
+        throw new Error(`Failed to fetch user stats: ${res.status}`)
+    }
+    
     return res.json()
 }

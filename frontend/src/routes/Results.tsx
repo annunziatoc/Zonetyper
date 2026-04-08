@@ -13,7 +13,7 @@ const ResultsScreen = () => {
     const [stats, setStats] = useState<userStatsDto | null>(null);
     useEffect(() => {
         if (!endTime) return
-        getUserStats().then(setStats)
+        getUserStats().then(setStats).catch(err => console.error('getUserStats failed',err));
     }, [endTime])
 
     return (
