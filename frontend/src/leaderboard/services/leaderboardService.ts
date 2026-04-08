@@ -8,5 +8,9 @@ export type LeaderboardEntryDto = {
 
 export async function getLeaderboardStats(): Promise<LeaderboardEntryDto[]> {
     const res = await fetch(`${API_BASE}/api/sessions/leaderboard`)
+
+    if (!res.ok) {
+        throw new Error(`Failed to fetch getLeaderboardStats ${res.status}`)
+    }
     return res.json()
 }
