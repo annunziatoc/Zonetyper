@@ -11,12 +11,16 @@ export type CreateTypingSessionDto = {
 
 export async function submitSession(dto: CreateTypingSessionDto) {
 
-    await fetch(`${API_BASE}/api/sessions`, {
+    const res = await fetch(`${API_BASE}/api/sessions`, {
 
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(dto)
     })
+
+    if (!res.ok) {
+        throw new Error('Failed to submit session: ${res.status}')
+    }
 }
 
 

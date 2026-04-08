@@ -16,7 +16,7 @@ const useEndCompletion = () => {
             //get all chars and create an arr like ['c','h','a','r','s',' ',]
             //join into a string like so ['chars ']
             //split to get word chunks ['chars', '']
-            const nOfWords = charsArr.map(cs => cs.char).join('').split(' ').length
+            const nOfWords = charsArr.map(cs => cs.char).join('').split(' ').filter(Boolean).length
             //ms to s to min 
             const elapsedMin = (now - startTime) / 60000
             const wpm = startTime === 0 ? 0 : Math.floor(nOfWords / elapsedMin)
