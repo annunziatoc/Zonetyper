@@ -3,7 +3,7 @@ import useTypingStore from "../typer/hooks/useTypingStore";
 import { getUserStats, type userStatsDto } from "../typer/services/userStatsService";
 import styles from './Results.module.css'
 import Loading from "../shared/components/Loading";
-import WPMChart from "../typer/components/WPMChart";
+import WpmChart from "../typer/components/WpmChart";
 
 const Results = () => {
     const {
@@ -13,7 +13,7 @@ const Results = () => {
     const [stats, setStats] = useState<userStatsDto | null>(null);
     useEffect(() => {
         if (!endTime) return
-        getUserStats().then(setStats).catch(err => console.error('getUserStats failed',err));
+        getUserStats().then(setStats).catch(err => console.error('getUserStats failed', err));
     }, [endTime])
 
     return (
@@ -39,7 +39,7 @@ const Results = () => {
                 <div className={styles.graphGridOuter}>
                     <div className={styles.graphFlexInner}>
                         <div>Words Per Minute</div>
-                        <WPMChart />
+                        <WpmChart />
                     </div>
                     <div className={styles.seconds}>Seconds</div>
                 </div>
@@ -50,3 +50,4 @@ const Results = () => {
 
 
 export default Results;
+

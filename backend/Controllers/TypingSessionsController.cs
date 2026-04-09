@@ -13,7 +13,7 @@ public class TypingSessionController(ZonetyperDbContext db, ILogger<TypingSessio
 
         var session = new TypingSession
         {
-            WPM = dto.Wpm,
+            Wpm = dto.Wpm,
             Accuracy = dto.Accuracy,
             CompletedAt = DateTime.UtcNow,
             Duration = dto.Duration,
@@ -39,7 +39,7 @@ public class TypingSessionController(ZonetyperDbContext db, ILogger<TypingSessio
     public async Task<IActionResult> GetStats()
     {
 
-        var topSpeed = (await db.TypingSessions.MaxAsync(s => (double?)s.WPM)) ?? 0;
+        var topSpeed = (await db.TypingSessions.MaxAsync(s => (double?)s.Wpm)) ?? 0;
         var recentStats = await db.TypingSessions
         .OrderByDescending(s => s.CompletedAt)
         .Take(5)
@@ -53,9 +53,9 @@ public class TypingSessionController(ZonetyperDbContext db, ILogger<TypingSessio
     public async Task<IActionResult> GetLeaderboardStats()
     {
         var leaderboardStats = await db.TypingSessions
-        .OrderByDescending(s => s.WPM)
+        .OrderByDescending(s => s.Wpm)
         .Take(15)
-        .Select(s => new { s.WPM, s.Accuracy })
+        .Select(s => new { s.Wpm, s.Accuracy })
         .ToListAsync();
         return Ok(leaderboardStats);
     }

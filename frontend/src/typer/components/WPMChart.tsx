@@ -1,9 +1,9 @@
 
 import useTypingStore from "../hooks/useTypingStore"
-import styles from './WPMChart.module.css'
+import styles from './WpmChart.module.css'
 import { CartesianGrid, Line, LineChart, ResponsiveContainer, XAxis, YAxis } from "recharts"
 
-const WPMChart = () => {
+const WpmChart = () => {
 
     const { wpmHistory } = useTypingStore()
     return (
@@ -27,4 +27,4 @@ const WPMChart = () => {
     )
 }
 
-export default WPMChart;
+export default WpmChart;

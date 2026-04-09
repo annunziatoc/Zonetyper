@@ -8,7 +8,7 @@ import CharDisplay from "./CharDisplay";
 import useTypingStore from "../hooks/useTypingStore";
 import Results from "../../routes/Results";
 import { AnimatePresence, motion } from "framer-motion"
-import useWPMTracking from "../hooks/useWPMTracking";
+import useWpmHistory from "../hooks/useWpmHistory";
 import { useNavigate } from "react-router-dom";
 
 const MainSurface = ({ surfaceRef }: { surfaceRef: React.RefObject<HTMLDivElement | null> }) => {
@@ -17,7 +17,7 @@ const MainSurface = ({ surfaceRef }: { surfaceRef: React.RefObject<HTMLDivElemen
     const { endTime, sourceTextId } = useTypingStore()
     const navigate = useNavigate();
     useStartSession();
-    useWPMTracking();
+    useWpmHistory();
     useEndSession();
     useEffect(() => {
         if (endTime) {

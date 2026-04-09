@@ -22,7 +22,7 @@ const Leaderboard = () => {
             <div className={styles.categoriesWrapper}>
                 <div>Rank</div>
                 <div>User</div>
-                <div>WPM</div>
+                <div>Wpm</div>
                 <div>Accuracy</div>
             </div>
 

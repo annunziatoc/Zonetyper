@@ -1,7 +1,7 @@
 import { useEffect } from "react"
 import useTypingStore from "./useTypingStore"
 
-const useWPMTracking = () => {
+const useWpmHistory = () => {
 
     const { charsArr, startTime, addWpmHistory } = useTypingStore()
     const wordsCompleted = charsArr.filter((cs) => cs.char === ' ' && cs.status === true).length
@@ -19,4 +19,4 @@ const useWPMTracking = () => {
     }, [charsArr])
 }
 
-export default useWPMTracking
+export default useWpmHistory
