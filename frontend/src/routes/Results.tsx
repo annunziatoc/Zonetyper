@@ -22,8 +22,6 @@ const Results = () => {
                 <ul className={styles.statsGrid}>
                     <li>Speed: <span>{`${finalWpm} `}<small>wpm</small></span></li>
                     <li>Accuracy: <span>{`${finalAcc} %`}</span></li>
-                    {/* <li>Duration: <span>{`${finalDur} s`}</span></li>
-                    <li>Errors: <span>{errorCount}</span></li> */}
                     {stats ? <li>Top Speed: <span>{`${stats?.topSpeed} `}
                         <small>wpm</small></span></li> : <li><Loading /></li>}
                     {stats ? <li>Last 5 Avg: <span>
