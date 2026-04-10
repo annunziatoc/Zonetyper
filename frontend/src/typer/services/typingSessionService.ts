@@ -19,7 +19,7 @@ export async function submitSession(dto: CreateTypingSessionDto) {
     })
 
     if (!res.ok) {
-        throw new Error('Failed to submit session: ${res.status}')
+        throw new Error(`Failed to submit session: ${res.status}`)
     }
 }
 
