@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { getLeaderboardStats, type LeaderboardEntryDto } from "../leaderboard/services/leaderboardService";
 import styles from './Leaderboard.module.css'
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useEscapeNav } from "../shared/hooks/useEscapeNav";
 import Loading from "../shared/components/Loading";
 
@@ -9,16 +9,14 @@ const Leaderboard = () => {
 
     const [leaderboardStats, setLeaderBoardStats] = useState<LeaderboardEntryDto[] | null>(null)
     useEscapeNav();
+    const navigate = useNavigate()
     useEffect(() => {
-            getLeaderboardStats().then((data) => setLeaderBoardStats(data))
+        getLeaderboardStats().then((data) => setLeaderBoardStats(data))
     }, [])
 
     return (
         <div className={styles.leaderBoardWrapper}>
-            <Link to='/'>
-                <div className={styles.exitButton}>&#x2715;</div>
-            </Link>
-
+            <div onClick={() => navigate(-1)} className={styles.exitButton}>&#x2715;</div>
             <div className={styles.categoriesWrapper}>
                 <div>Rank</div>
                 <div>User</div>
