@@ -1,4 +1,6 @@
-﻿namespace ZonetyperApi.Models;
+﻿using Npgsql.Replication;
+
+namespace ZonetyperApi.Models;
 
 public class TypingSession
 {
@@ -11,5 +13,4 @@ public class TypingSession
     public int ErrorCount { get; set; }
     public DateTime CompletedAt { get; set; }
 }
-
 

@@ -23,3 +23,5 @@ export async function getUserStats (): Promise<userStatsDto> {
     
     return res.json()
 }
+
+

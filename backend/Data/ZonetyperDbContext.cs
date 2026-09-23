@@ -10,3 +10,4 @@ public class ZonetyperDbContext : DbContext
 
     public DbSet<TypingSession> TypingSessions { get; set; }
 }
+

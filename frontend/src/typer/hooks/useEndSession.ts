@@ -4,6 +4,11 @@ import { submitSession } from "../services/typingSessionService"
 
 const useEndCompletion = () => {
 
+    /* 
+   concludes a session after last correct char is typed, sets endTime
+   and computes wpm and other stats follow by session submission to backend
+   */
+
     const { charsArr, startTime, sourceText, sourceTextId, errorCount,
         setEndTime, setFinalWpm, setFinalAcc, setFinalDur, finalWpm } = useTypingStore()
 

@@ -4,11 +4,15 @@ import { getNewText } from "../services/typingApi";
 
 export const useStartSession = () => {
 
-    const { sourceText, setCharsArr,resetSession, setSourceText, setSourceTextId,
-    setCurrentQuote, currentQuote} = useTypingStore();
+    /*
+    Inititalizes the session, fetches and sets the source text
+   */
+
+    const { sourceText, setCharsArr, resetSession, setSourceText, setSourceTextId,
+        setCurrentQuote, currentQuote } = useTypingStore();
 
     useEffect(() => {
-        if (currentQuote) return; 
+        if (currentQuote) return;
         const newText = getNewText();
         setCurrentQuote(newText.text);
         setSourceText(newText.text);

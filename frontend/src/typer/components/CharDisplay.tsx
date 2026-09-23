@@ -23,6 +23,7 @@ const CharDisplay = ({ containerRef }: { containerRef: React.RefObject<HTMLDivEl
                 ))
             }
             {
+                //if the measurement actually happened and returned real values
                 caretPos.height > 0 && (
                     <motion.div //caret animation
                         key={sourceTextId}

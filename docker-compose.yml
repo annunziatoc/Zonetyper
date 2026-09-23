@@ -1,5 +1,6 @@
 services:
   frontend:
+    profiles: ["dev"]
     build: ./frontend
     container_name: zonetyper-frontend
     ports:
@@ -9,31 +10,35 @@ services:
       - /app/node_modules
     depends_on:
       - backend
-  
+
   backend:
     build: ./backend
     container_name: zonetyper-backend
+    restart: unless-stopped
     ports:
-      - "5000:5000"
+      - "127.0.0.1:5000:5000"
     environment:
-      - ApiNinja__Key=${API_NINJA_KEY}
       - ASPNETCORE_URLS=http://+:5000
-      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_ENVIRONMENT=${ASPNETCORE_ENVIRONMENT:-Production}
       - ConnectionStrings__DefaultConnection=Host=postgres;Port=5432;Database=${POSTGRES_DB};Username=${POSTGRES_USER};Password=${POSTGRES_PASSWORD}
     depends_on:
-      - postgres
-  
+      postgres:
+        condition: service_healthy
+
   postgres:
     image: postgres:16
     container_name: zonetyper-db
+    restart: unless-stopped
     environment:
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
       POSTGRES_DB: ${POSTGRES_DB}
-    ports:
-      - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 5s
+      retries: 10
 
 volumes:
   postgres_data:

@@ -1,4 +1,6 @@
-﻿public record CreateTypingSessionDto(
+﻿using System.Diagnostics.Tracing;
+
+public record CreateTypingSessionDto(
     int SourceTextId,
     double Wpm,
     double Accuracy,
@@ -6,3 +8,6 @@
     int ErrorCount,
     string SourceText
 );
+
+
+

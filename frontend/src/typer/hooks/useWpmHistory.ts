@@ -3,6 +3,10 @@ import useTypingStore from "./useTypingStore"
 
 const useWpmHistory = () => {
 
+    /* 
+    records a wpm snapshot on each keypress   
+  */
+
     const { charsArr, startTime, addWpmHistory } = useTypingStore()
     const wordsCompleted = charsArr.filter((cs) => cs.char === ' ' && cs.status === true).length
 

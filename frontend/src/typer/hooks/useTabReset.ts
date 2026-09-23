@@ -5,6 +5,10 @@ import { useNavigate } from "react-router";
 
 const useTabReset = () => {
 
+    /* 
+    listens on window for Tab, calls reset and navs to home
+    */
+
     const navigate = useNavigate()
     const { setSourceText, setSourceTextId, resetSession } = useTypingStore();
 

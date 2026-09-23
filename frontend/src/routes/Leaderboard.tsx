@@ -38,12 +38,9 @@ const Leaderboard = () => {
                 <div className={styles.loadingWrapper}><Loading /></div>}
 
         </div >
-
-
-
-
     )
 }
 
 
 export default Leaderboard;
+
