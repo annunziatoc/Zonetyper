@@ -14,7 +14,7 @@ import {useNavigate} from "react-router-dom";
 const MainSurface = ({surfaceRef}: { surfaceRef: React.RefObject<HTMLDivElement | null> }) => {
 
     const containerRef = useRef<HTMLDivElement | null>(null);
-    const {endTime, sourceTextId} = useTypingStore()
+    const {endTime} = useTypingStore()
     const navigate = useNavigate();
     useStartSession();
     useWpmHistory();
