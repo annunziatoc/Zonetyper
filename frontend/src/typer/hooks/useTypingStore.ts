@@ -1,4 +1,4 @@
-import { create } from 'zustand'
+import {create} from 'zustand'
 
 interface CharState {
     char: string;
@@ -54,20 +54,25 @@ const useTypingStore = create<TypingState>((set) => ({
     errorCount: 0,
     wpmHistory: [],
     currentQuote: '',
-    setCurrIdx: (fn) => set((state) => ({ currIdx: fn(state.currIdx) })),
-    setCharsArr: (fn) => set((state) => ({ charsArr: fn(state.charsArr) })),
-    setCurrentQuote: (quote) => set(({ currentQuote: quote })),
-    addWpmHistory: ((entry) => set((state) => ({ wpmHistory: [...state.wpmHistory, { time: entry.time, wpm: entry.wpm }] }))),
-    setSourceText: ((text) => set({ sourceText: text })),
-    setSourceTextId: ((id) => set({ sourceTextId: id })),
-    setStartTime: (time) => set({ startTime: time }),
-    setEndTime: (time) => set({ endTime: time }),
-    setFinalWpm: (wpm) => set({ finalWpm: wpm }),
-    setFinalAcc: (acc) => set({ finalAcc: acc }),
-    setFinalDur: (dur) => set({ finalDur: dur }),
-    setErrorCount: () => set((state) => ({ errorCount: state.errorCount + 1 })),
-    resetWpmHistory: () => set(() => ({ wpmHistory: [] })),
-    resetErrorCount: () => set({ errorCount: 0 }),
+    setCurrIdx: (fn) => set((state) => ({currIdx: fn(state.currIdx)})),
+    setCharsArr: (fn) => set((state) => ({charsArr: fn(state.charsArr)})),
+    setCurrentQuote: (quote) => set(({currentQuote: quote})),
+    addWpmHistory: (entry) => set((state) => ({
+        wpmHistory: [...state.wpmHistory, {
+            time: entry.time,
+            wpm: entry.wpm
+        }]
+    })),
+    setSourceText: (text) => set({sourceText: text}),
+    setSourceTextId: (id) => set({sourceTextId: id}),
+    setStartTime: (time) => set({startTime: time}),
+    setEndTime: (time) => set({endTime: time}),
+    setFinalWpm: (wpm) => set({finalWpm: wpm}),
+    setFinalAcc: (acc) => set({finalAcc: acc}),
+    setFinalDur: (dur) => set({finalDur: dur}),
+    setErrorCount: () => set((state) => ({errorCount: state.errorCount + 1})),
+    resetWpmHistory: () => set(() => ({wpmHistory: []})),
+    resetErrorCount: () => set({errorCount: 0}),
     resetSession: () => set({
         currIdx: 0,
         charsArr: [],
@@ -80,7 +85,6 @@ const useTypingStore = create<TypingState>((set) => ({
         wpmHistory: [],
     })
 }))
-
 
 
 export default useTypingStore;
