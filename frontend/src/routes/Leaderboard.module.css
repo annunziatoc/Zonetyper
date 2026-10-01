@@ -39,16 +39,18 @@
 
 .exitButton {
     position: absolute;
-    scale: 165%;
+    margin: -6px;
+    scale: 85%;
     right: 1rem;
     top: 1rem;
-    padding-block: 0.025rem;
-    padding-inline: 0.3rem;
+    display: grid;
+    place-items: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    padding: 0;
     cursor: pointer;
-    width: fit-content;
-    border-radius: 10;
+    border-radius: 6px;
     background-color: var(--leaderboard-exit-bg);
-    border-radius: 2px;
     color: var(--leaderboard-exit-button);
 }
 

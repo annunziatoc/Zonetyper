@@ -29,7 +29,7 @@ const MainSurface = ({surfaceRef}: { surfaceRef: React.RefObject<HTMLDivElement 
         <main className={styles.mainSurface}>
             <AnimatePresence mode="wait">
                 {!endTime ?
-                    <motion.div key="typing" initial={{opacity: 0}} animate={{opacity: 1}} exit={{opacity: 0}}
+                    <motion.div key="typing" initial={false} animate={{opacity: 1}} exit={{opacity: 0}}
                                 transition={{duration: 0.15}}>
                         <div className={styles.typingMaskWrapper}>
                             <div ref={containerRef} className={styles.typingMask}>
